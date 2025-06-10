@@ -1,4 +1,4 @@
-import { Project, ContentBlock } from '@/types/project'; // Import ContentBlock type
+import { Project } from '@/types/project'; // Import Project type
 
 export const projects: Project[] = [
   // --- Operatie Infiltratie ---

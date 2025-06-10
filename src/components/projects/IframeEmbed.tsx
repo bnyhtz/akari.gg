@@ -15,13 +15,6 @@ const IframeEmbed: React.FC<IframeEmbedProps> = ({ block }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Basic validation for URL
-  let isValidUrl = true;
-  try {
-    new URL(block.url);
-  } catch {
-    isValidUrl = false;
-  }
 
   // Always call hooks before any return
   useEffect(() => {
@@ -31,6 +24,14 @@ const IframeEmbed: React.FC<IframeEmbedProps> = ({ block }) => {
     document.addEventListener('fullscreenchange', handleFullScreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullScreenChange);
   }, []);
+
+  // Basic validation for URL
+  let isValidUrl = true;
+  try {
+    new URL(block.url);
+  } catch {
+    isValidUrl = false;
+  }
 
   if (!isValidUrl) {
     console.error("Invalid iframe URL provided:", block.url);
@@ -47,13 +48,7 @@ const IframeEmbed: React.FC<IframeEmbedProps> = ({ block }) => {
     }
   };
 
-  useEffect(() => {
-    const handleFullScreenChange = () => {
-      setIsFullScreen(!!document.fullscreenElement);
-    };
-    document.addEventListener('fullscreenchange', handleFullScreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullScreenChange);
-  }, []);
+
 
   // Use the title from block if available, otherwise default for accessibility
   const accessibilityTitle = block.title || "Embedded Content";
