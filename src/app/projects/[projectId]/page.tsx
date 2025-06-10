@@ -14,12 +14,12 @@ import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Info, ListChecks } from 'lucide-react'; // Icons for the info sections
 
-// Define the expected params structure directly
-interface ProjectDetailPageProps {
-  params: {
-    projectId: string;
-  };
-}
+
+// Next.js app directory expects params and optionally searchParams
+type ProjectDetailPageProps = {
+  params: { projectId: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
 // Optional: Animation variants for the detail page
 const pageVariants = {
