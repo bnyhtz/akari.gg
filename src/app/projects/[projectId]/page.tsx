@@ -12,6 +12,7 @@ import ImageGallery from '@/components/projects/ImageGallery'; // Import ImageGa
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
+import type { FC } from 'react';
 import { Info, ListChecks } from 'lucide-react'; // Icons for the info sections
 
 
@@ -115,9 +116,10 @@ interface ProjectPageProps {
   params: {
     projectId: string;
   };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-const ProjectDetailPage = ({ params }: ProjectPageProps) => {
+const ProjectDetailPage: FC<ProjectPageProps> = ({ params }) => {
   const { projectId } = params;
   const project = projects.find((p) => p.id === projectId);
 
