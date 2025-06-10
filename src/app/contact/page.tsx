@@ -73,7 +73,7 @@ export default function ContactPage() {
   <div className="flex flex-col items-center gap-4">
     <span className="text-gray-400 text-lg text-center">You can also contact me via</span>
     <div className="flex flex-row gap-6 justify-center">
-      <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/bnyhtz" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <Linkedin className="w-9 h-9 text-gray-400 hover:text-purple-400 transition-colors" />
       </a>
     </div>
