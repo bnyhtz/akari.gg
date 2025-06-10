@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll } from "framer-motion"; // Removed unused useTransform
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react"; // Added useRef
 import { projects } from "@/data/projects"; // Import actual project data

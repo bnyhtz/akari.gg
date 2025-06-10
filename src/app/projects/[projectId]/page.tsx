@@ -3,7 +3,7 @@
 
 import { projects } from '@/data/projects';
 // Import the main Project type and the ContentBlock union type
-import { Project, ContentBlock } from '@/types/project';
+import { ContentBlock } from '@/types/project';
 import YouTubeEmbed from '@/components/projects/YouTubeEmbed';
 import CodeSnippetDisplay from '@/components/projects/CodeSnippetDisplay';
 import IframeEmbed from '@/components/projects/IframeEmbed';
@@ -104,7 +104,11 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
 
     default:
       // Handle unknown block types gracefully
-      console.warn("Unknown content block type:", (block as any).type);
+      if (typeof block === 'object' && block && 'type' in block) {
+        console.warn("Unknown content block type:", (block as { type: string }).type);
+      } else {
+        console.warn("Unknown content block type:", block);
+      }
       return null;
   }
 };

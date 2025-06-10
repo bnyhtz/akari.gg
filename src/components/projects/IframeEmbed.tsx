@@ -16,9 +16,23 @@ const IframeEmbed: React.FC<IframeEmbedProps> = ({ block }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Basic validation for URL
+  let isValidUrl = true;
   try {
     new URL(block.url);
-  } catch (e) {
+  } catch {
+    isValidUrl = false;
+  }
+
+  // Always call hooks before any return
+  useEffect(() => {
+    const handleFullScreenChange = () => {
+      setIsFullScreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullScreenChange);
+  }, []);
+
+  if (!isValidUrl) {
     console.error("Invalid iframe URL provided:", block.url);
     return <p className="text-red-500">Error: Invalid embed URL.</p>;
   }
