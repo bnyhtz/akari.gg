@@ -1,6 +1,6 @@
+"use client";
 export const runtime = 'edge';
 // src/app/projects/[projectId]/page.tsx
-"use client";
 
 import { use } from "react";
 import { projects } from '@/data/projects';
