@@ -112,10 +112,8 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
 
 const ProjectDetailPage = ({
   params,
-  searchParams,
 }: {
   params: { projectId: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const { projectId } = params;
   const project = projects.find((p) => p.id === projectId);
