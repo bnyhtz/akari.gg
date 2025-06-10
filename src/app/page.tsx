@@ -85,7 +85,7 @@ export default function Home() {
             {/* Image Content (Moved First) */}
             <motion.div variants={itemVariants} className="flex-shrink-0 order-first"> {/* Ensure image comes first */}
                 <Image
-                    src="/images/profile.png" // Path from public directory
+                    src="https://avatars.githubusercontent.com/u/90682004?v=4" // Path from public directory
                     alt="Profile Picture"
                     width={280} // Keep width/height for non-fill images
                     height={280}
