@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 // src/app/projects/[projectId]/page.tsx
 "use client";
 
