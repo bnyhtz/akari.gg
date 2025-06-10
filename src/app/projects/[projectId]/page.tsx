@@ -110,11 +110,14 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
 };
 
 
-const ProjectDetailPage = ({
-  params,
-}: {
-  params: { projectId: string };
-}) => {
+// Define props type for clarity and type safety
+interface ProjectPageProps {
+  params: {
+    projectId: string;
+  };
+}
+
+const ProjectDetailPage = ({ params }: ProjectPageProps) => {
   const { projectId } = params;
   const project = projects.find((p) => p.id === projectId);
 
