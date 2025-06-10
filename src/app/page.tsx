@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion"; // Added useScroll, useTransform
+import { motion, useScroll } from "framer-motion"; // Removed unused useTransform
 import Link from "next/link";
 import { useRef } from "react"; // Added useRef
 import { projects } from "@/data/projects"; // Import actual project data
-import { Project } from "@/types/project"; // Import Project type
+
 
 export default function Home() {
   // Refs for scroll-triggered background animations
@@ -13,16 +13,10 @@ export default function Home() {
   const featuredRef = useRef<HTMLDivElement>(null);
 
   // Scroll tracking for "Currently Working On" section
-  const { scrollYProgress: currentWorkScroll } = useScroll({
-    target: currentWorkRef,
-    offset: ["start end", "center center"]
-  });
+
 
   // Scroll tracking for "Featured Projects" section
-  const { scrollYProgress: featuredScroll } = useScroll({
-    target: featuredRef,
-    offset: ["start end", "center center"]
-  });
+
 
   // Transform scroll progress to background opacity (No longer used for background, but keep if needed elsewhere)
   // const currentWorkBgOpacity = useTransform(currentWorkScroll, [0, 1], [0, 1]);
@@ -104,7 +98,7 @@ export default function Home() {
             {/* Text Content (Moved Second) */}
             <motion.div variants={itemVariants} className="text-center md:text-left flex-1 order-last md:order-none"> {/* Adjusted alignment and order */}
                 <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl font-bold mb-4 font-heading">
-                  Hi there, I'm Akari!
+                  Hi there, I&apos;m Akari!
                 </motion.h1>
                 <motion.p variants={itemVariants} className="text-xl md:text-2xl text-gray-400 mb-8">
                   Creating immersive worlds, unforgettable experiences, and pushing the boundaries of interactive entertainment.
@@ -138,12 +132,12 @@ export default function Home() {
            viewport={{ once: true, amount: 0.3 }}
            variants={containerVariants}
         >
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-center mb-8 font-heading text-purple-400">
-            What I'm Currently Working On
+            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-center mb-8 font-heading text-purple-400">
+            What I&apos;m Currently Working On
           </motion.h2>
           <motion.div variants={itemVariants} className="bg-transparent p-6 rounded-lg max-w-3xl mx-auto relative">
             <p className="text-gray-300 text-lg">
-              Right now, I'm deep into developing [Exciting Project Name], an innovative [Genre] game focusing on [Key Feature/Mechanic]. Expect updates soon! I'm also experimenting with [New Technology/Tool] to enhance future projects.
+              Right now, I&apos;m deep into developing [Exciting Project Name], an innovative [Genre] game focusing on [Key Feature/Mechanic]. Expect updates soon! I&apos;m also experimenting with [New Technology/Tool] to enhance future projects.
             </p>
           </motion.div>
         </motion.div>
