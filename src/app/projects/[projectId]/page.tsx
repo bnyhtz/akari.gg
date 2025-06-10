@@ -1,6 +1,7 @@
 // src/app/projects/[projectId]/page.tsx
 "use client";
 
+import { use } from "react";
 import { projects } from '@/data/projects';
 // Import the main Project type and the ContentBlock union type
 import { ContentBlock } from '@/types/project';
@@ -12,8 +13,8 @@ import ImageGallery from '@/components/projects/ImageGallery'; // Import ImageGa
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
-import type { FC } from 'react';
 import { Info, ListChecks } from 'lucide-react'; // Icons for the info sections
+
 
 
 // Next.js app directory expects params and optionally searchParams
@@ -111,99 +112,93 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
 };
 
 
-// Define props type for clarity and type safety
-interface ProjectPageProps {
-  params: {
-    projectId: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
+export default function ProjectDetailPage({
+ params,
+}: {
+ params: Promise<{ projectId: string }>;
+}) {
+ const { projectId } = use(params);
+ const project = projects.find((p) => p.id === projectId);
+
+ if (!project) {
+   notFound();
+ }
+
+ return (
+   <motion.div
+     className="container mx-auto max-w-4xl px-4 py-12 md:py-16"
+     initial="hidden"
+     animate="visible"
+     variants={pageVariants}
+   >
+     {/* Back link */}
+     <Link href="/projects" className="text-purple-400 hover:underline mb-6 inline-block">
+       &larr; Back to Projects
+     </Link>
+
+     {/* Project Title (Main H1) */}
+     <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-purple-300">{project.title}</h1>
+
+     {/* Re-added Main Project Description */}
+     <p className="text-lg text-gray-300 mb-8 whitespace-pre-wrap">{project.description}</p>
+
+     {/* Optional Tags */}
+     {project.tags && project.tags.length > 0 && (
+       <div className="mb-8 flex flex-wrap gap-2">
+         {project.tags.map((tag, index) => (
+           <span key={`${project.id}-tag-${index}`} className="bg-purple-600/50 text-purple-200 text-xs font-medium px-3 py-1 rounded-full">
+             {tag}
+           </span>
+         ))}
+       </div>
+     )}
+
+     {/* --- Styled Info Sections (Keep these separate for now) --- */}
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"> {/* Increased bottom margin */}
+       {/* Project Info Section */}
+       {project.projectInfo && project.projectInfo.length > 0 && (
+         <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg border border-gray-700/50 p-6">
+           <h2 className="text-2xl font-semibold mb-4 text-gray-100 flex items-center gap-2">
+             <Info size={20} className="text-blue-400" /> Project Info
+           </h2>
+           <dl className="space-y-2">
+             {project.projectInfo.map((info, index) => (
+               <div key={`${project.id}-info-${index}`} className="flex justify-between text-sm">
+                 <dt className="font-medium text-gray-400">{info.label}:</dt>
+                 <dd className="text-gray-200 text-right">{info.value}</dd>
+               </div>
+             ))}
+           </dl>
+         </div>
+       )}
+       {/* Contributions Section */}
+       {project.contributions && project.contributions.length > 0 && (
+         <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg border border-gray-700/50 p-6">
+           <h2 className="text-2xl font-semibold mb-4 text-gray-100 flex items-center gap-2">
+             <ListChecks size={20} className="text-green-400" /> My Contributions
+           </h2>
+           <ul className="space-y-2 text-gray-300 text-sm list-none">
+             {project.contributions.map((contribution, index) => (
+               <li key={`${project.id}-contrib-${index}`} className="flex items-start gap-2">
+                  <span className="text-green-400 mt-1">&#10003;</span> {/* Checkmark */}
+                  <span>{contribution}</span>
+               </li>
+             ))}
+           </ul>
+         </div>
+       )}
+     </div>
+     {/* --- End Styled Info Sections --- */}
+
+         
+           {/* --- Render Content Blocks --- */}
+           <div className="space-y-10"> {/* Increased spacing between blocks */}
+             {project.contentBlocks.map((block, index) =>
+               renderContentBlock(block, project.id, index)
+             )}
+           </div> {/* Added missing closing div */}
+     {/* --- End Content Blocks --- */}
+
+   </motion.div>
+ );
 }
-
-const ProjectDetailPage: FC<ProjectPageProps> = ({ params }) => {
-  const { projectId } = params;
-  const project = projects.find((p) => p.id === projectId);
-
-  if (!project) {
-    notFound();
-  }
-
-  return (
-    <motion.div
-      className="container mx-auto max-w-4xl px-4 py-12 md:py-16"
-      initial="hidden"
-      animate="visible"
-      variants={pageVariants}
-    >
-      {/* Back link */}
-      <Link href="/projects" className="text-purple-400 hover:underline mb-6 inline-block">
-        &larr; Back to Projects
-      </Link>
-
-      {/* Project Title (Main H1) */}
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-purple-300">{project.title}</h1>
-
-      {/* Re-added Main Project Description */}
-      <p className="text-lg text-gray-300 mb-8 whitespace-pre-wrap">{project.description}</p>
-
-      {/* Optional Tags */}
-      {project.tags && project.tags.length > 0 && (
-        <div className="mb-8 flex flex-wrap gap-2">
-          {project.tags.map((tag, index) => (
-            <span key={`${project.id}-tag-${index}`} className="bg-purple-600/50 text-purple-200 text-xs font-medium px-3 py-1 rounded-full">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {/* --- Styled Info Sections (Keep these separate for now) --- */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"> {/* Increased bottom margin */}
-        {/* Project Info Section */}
-        {project.projectInfo && project.projectInfo.length > 0 && (
-          <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg border border-gray-700/50 p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-100 flex items-center gap-2">
-              <Info size={20} className="text-blue-400" /> Project Info
-            </h2>
-            <dl className="space-y-2">
-              {project.projectInfo.map((info, index) => (
-                <div key={`${project.id}-info-${index}`} className="flex justify-between text-sm">
-                  <dt className="font-medium text-gray-400">{info.label}:</dt>
-                  <dd className="text-gray-200 text-right">{info.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        )}
-        {/* Contributions Section */}
-        {project.contributions && project.contributions.length > 0 && (
-          <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg border border-gray-700/50 p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-100 flex items-center gap-2">
-              <ListChecks size={20} className="text-green-400" /> My Contributions
-            </h2>
-            <ul className="space-y-2 text-gray-300 text-sm list-none">
-              {project.contributions.map((contribution, index) => (
-                <li key={`${project.id}-contrib-${index}`} className="flex items-start gap-2">
-                   <span className="text-green-400 mt-1">&#10003;</span> {/* Checkmark */}
-                   <span>{contribution}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-      {/* --- End Styled Info Sections --- */}
-
-      
-            {/* --- Render Content Blocks --- */}
-            <div className="space-y-10"> {/* Increased spacing between blocks */}
-              {project.contentBlocks.map((block, index) =>
-                renderContentBlock(block, project.id, index)
-              )}
-            </div> {/* Added missing closing div */}
-      {/* --- End Content Blocks --- */}
-
-    </motion.div>
-  );
-};
-
-export default ProjectDetailPage;
