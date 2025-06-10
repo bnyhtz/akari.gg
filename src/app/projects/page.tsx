@@ -48,7 +48,7 @@ export default function ProjectsOverviewPage() {
     >
       <motion.h1
         variants={itemVariants}
-        className="text-4xl md:text-5xl font-bold text-center mb-12 text-purple-400 font-heading"
+        className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#ff996c] font-heading"
       >
         My Projects
       </motion.h1>
@@ -84,7 +84,7 @@ export default function ProjectsOverviewPage() {
               </div>
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 font-heading text-purple-300">{project.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 font-heading text-[#ff996c]">{project.title}</h3>
                   {/* Reverted to use main description for summary */}
                   <p className="text-gray-400 text-sm mb-4">
                     {truncateDescription(project.description || '')}
@@ -94,13 +94,13 @@ export default function ProjectsOverviewPage() {
                 {project.tags && project.tags.length > 0 && (
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.tags.map((tag, index) => (
-                      <span key={`${project.id}-tag-${index}`} className="bg-purple-600/50 text-purple-200 text-xs font-medium px-2 py-0.5 rounded-full">
+                      <span key={`${project.id}-tag-${index}`} className="bg-[#D97150] text-white text-xs font-bold px-2 py-0.5 rounded-full">
                         {tag}
                       </span>
                     ))}
                   </div>
                 )}
-                 <span className="text-purple-400 hover:underline font-medium mt-4 inline-block text-sm">
+                 <span className="text-[#D97150] hover:underline font-medium mt-4 inline-block text-sm">
                    View Details &rarr;
                  </span>
               </div>

@@ -48,13 +48,13 @@ export default function Home() {
   };
 
   const buttonHoverTap = {
-    hover: { scale: 1.05, backgroundColor: "#7c3aed" /* purple-700 */ },
+    hover: { scale: 1.05, backgroundColor: "#D97150" /* purple-700 */ },
     tap: { scale: 0.95 },
   };
 
   // --- Featured Projects Logic ---
   // Define which project IDs to feature
-  const featuredProjectIds = ['operatie-infiltratie', 'bon-appmobile', 'urg']; // Example IDs, adjust as needed
+  const featuredProjectIds = ['ibeexploring', 'operatie-infiltratie', 'bon-appmobile']; // Example IDs, adjust as needed
 
   // Filter the main projects array
   const featuredProjectsData = projects.filter(project =>
@@ -89,7 +89,7 @@ export default function Home() {
                     alt="Profile Picture"
                     width={280} // Keep width/height for non-fill images
                     height={280}
-                    className="rounded-full border-4 border-purple-500/50 shadow-lg"
+                    className="rounded-full border-4 border-[#D97150]/50 shadow-lg"
                     style={{ objectFit: 'cover' }} // Use inline style
                     priority
                 />
@@ -101,12 +101,12 @@ export default function Home() {
                   Hi there, I&apos;m Akari!
                 </motion.h1>
                 <motion.p variants={itemVariants} className="text-xl md:text-2xl text-gray-400 mb-8">
-                  Creating immersive worlds, unforgettable experiences, and pushing the boundaries of interactive entertainment.
+                  Creating digital experiences packed with fun, creativity, and interactivity.
                 </motion.p>
                 <motion.div variants={itemVariants}>
                   <Link href="/projects" passHref legacyBehavior>
                     <motion.a
-              className="inline-block bg-purple-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 mt-4"
+              className="inline-block bg-[#FF996C] hover:bg-[#D97150] text-white font-bold py-3 px-8 rounded-full transition duration-300 mt-4"
               whileHover="hover"
               whileTap="tap"
               variants={buttonHoverTap}
@@ -132,13 +132,41 @@ export default function Home() {
            viewport={{ once: true, amount: 0.3 }}
            variants={containerVariants}
         >
-            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-center mb-8 font-heading text-purple-400">
+            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-center mb-8 font-heading text-[#ff996c]">
             What I&apos;m Currently Working On
           </motion.h2>
+          <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl text-gray-300 text-center font-bold">
+            IBeeXploring
+          </motion.h2>
+          <motion.p variants={itemVariants} className="text-gray-300 text-lg text-center mb-3">
+            a Birungi Studio project
+          </motion.p>
           <motion.div variants={itemVariants} className="bg-transparent p-6 rounded-lg max-w-3xl mx-auto relative">
-            <p className="text-gray-300 text-lg">
-              Right now, I&apos;m deep into developing [Exciting Project Name], an innovative [Genre] game focusing on [Key Feature/Mechanic]. Expect updates soon! I&apos;m also experimenting with [New Technology/Tool] to enhance future projects.
+            <div className="flex justify-center mb-8">
+              <Image
+                src="/images/ibx.png"
+                alt="Infinite Runner Project Preview"
+                width={420}
+                height={270}
+                className="rounded-lg shadow-lg object-cover"
+                priority
+              />
+            </div>
+            <p className="text-gray-300 text-lg text-center mb-6">
+              I'm currently focused on an <a href="https://IBeeXploring.com" className="text-[#D97150] hover:underline"><b>Infinite Runner</b></a> game with <a href="https://birungi.studio" className="text-[#D97150] hover:underline"><b>Birungi Studio</b></a> to create <b>Social Impact</b>. I'm using <b>C#</b> and the <b>Unity</b> Game Engine for this project.
             </p>
+
+          <motion.div variants={itemVariants} className="text-center mt-8">
+             <Link href="https://IBeeXploring.com" passHref legacyBehavior>
+              <motion.a
+                className="inline-block bg-[#FF996C] hover:bg-[#D97150] text-white font-bold py-3 px-8 rounded-full transition duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Learn More
+              </motion.a>
+            </Link>
+          </motion.div>
           </motion.div>
         </motion.div>
       </section>
@@ -156,7 +184,7 @@ export default function Home() {
           variants={containerVariants}
           className="relative" // Ensure content is above background
         >
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-center mb-12 font-heading text-purple-400">
+          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-center mb-12 font-heading text-[#ff996c]">
             Featured Projects
           </motion.h2>
           <motion.div
@@ -211,7 +239,7 @@ export default function Home() {
           <motion.div variants={itemVariants} className="text-center">
              <Link href="/projects" passHref legacyBehavior>
               <motion.a
-                className="inline-block bg-gray-700 hover:bg-gray-600 text-purple-300 font-bold py-3 px-8 rounded-full transition duration-300"
+                className="inline-block bg-[#FF996C] hover:bg-[#D97150] text-white font-bold py-3 px-8 rounded-full transition duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

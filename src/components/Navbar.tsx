@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"; // Added useScroll, useMotionValueEvent
 import { usePathname } from "next/navigation";
 import { useState } from "react"; // Added useState
@@ -38,9 +39,16 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-purple-400 hover:text-purple-300 transition-colors">
-          Akari Le
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/akaHat.png" // Path from public directory
+            alt="Profile Picture"
+            width={64} // Keep width/height for non-fill images
+            height={64}
+            style={{ objectFit: 'cover' }} // Use inline style
+          />
         </Link>
+
         <ul className="flex space-x-6">
           {navItems.map((item) => (
             <li key={item.path}>

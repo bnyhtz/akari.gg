@@ -14,7 +14,7 @@ const Timeline: React.FC<TimelineProps> = ({ events }) => {
   };
 
   return (
-    <div className="relative pl-8 border-l-2 border-purple-700/50">
+    <div className="relative pl-8 border-l-2 border-[#d97150]">
       {events.map((event, index) => (
         <motion.div
           key={index}
@@ -23,10 +23,10 @@ const Timeline: React.FC<TimelineProps> = ({ events }) => {
           // Stagger children if needed, applied on parent in page.tsx
         >
           {/* Dot on the timeline */}
-          <div className="absolute w-4 h-4 bg-purple-500 rounded-full mt-1.5 -left-[9px] border border-gray-900 dark:border-purple-900 dark:bg-purple-700"></div>
+          <div className="absolute w-4 h-4 bg-[#ff996c] rounded-full mt-1.5 -left-[9px] border border-gray-900 dark:border-[#d97150] dark:bg-[#ff996c]"></div>
 
           {/* Year/Date */}
-          <time className="mb-1 text-sm font-normal leading-none text-purple-400/80">
+          <time className="mb-1 text-sm font-normal leading-none text-[#ff996c]">
             {event.year}
           </time>
 

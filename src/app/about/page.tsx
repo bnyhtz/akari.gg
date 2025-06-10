@@ -41,7 +41,7 @@ export default function AboutPage() {
     >
       <motion.h1
         variants={sectionVariants} // Animate title as a section
-        className="text-4xl md:text-5xl font-bold text-center mb-8 text-purple-400 font-heading"
+        className="text-4xl md:text-5xl font-bold text-center mb-8 text-[#ff996c] font-heading"
       >
         About Me
       </motion.h1>
@@ -56,13 +56,13 @@ export default function AboutPage() {
 
       {/* Timeline Section */}
       <motion.div variants={sectionVariants} className="mb-16"> {/* Increased margin */}
-        <h2 className="text-3xl font-semibold mb-8 text-center text-gray-200">My Journey</h2> {/* Increased margin */}
+        <h2 className="text-3xl font-semibold mb-8 text-center text-[#ff996c]">My Journey</h2> {/* Increased margin */}
         <Timeline events={timelineData} /> {/* Use Timeline component */}
       </motion.div>
 
       {/* Languages Section */}
       <motion.div variants={sectionVariants} className="mb-12">
-        <h2 className="text-3xl font-semibold mb-8 text-center text-gray-200">Languages</h2> {/* Increased margin */}
+        <h2 className="text-3xl font-semibold mb-8 text-center text-[#ff996c]">Languages</h2> {/* Increased margin */}
         <Languages languages={languageData} /> {/* Use Languages component */}
       </motion.div>
 

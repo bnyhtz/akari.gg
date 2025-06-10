@@ -1,6 +1,48 @@
 import { Project } from '@/types/project'; // Import Project type
 
 export const projects: Project[] = [
+    // --- IBeeXploring ---
+  {
+    id: 'ibeexploring',
+    title: 'IBeeXploring',
+    description: "An Mobile Infinite Runner game where you have to collect pollen and avoid obstacles. The game is set in a 3D world with a bee as the main character.",
+    featuredImageUrl: '/projects/IBeeXploring/FeaturedImage.png', // Placeholder
+    tags: ['Unity', 'C#', 'Mobile', 'Infinite Runner', 'Birungi Studio'],
+    projectInfo: [
+        { label: "Engine", value: "Unity Engine" },
+        { label: "Language", value: "C#" },
+        { label: "Duration", value: "10 weeks (5 days/week)" },
+        { label: "Type", value: "Mobile Game" },
+        { label: "Reason", value: "Project for Birungi Studio" }
+    ],
+    contributions: [
+      "Created a system for Player Damage Feedback.",
+      "Fixed bugs in the game.",
+      "Handled IOS beta testing.",
+    ],
+    contentBlocks: [
+    //   { type: 'heading', level: 3, text: "Gallery" },
+    //   {
+    //     type: 'imageGallery',
+    //     images: [
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
+    //     ]
+    //   },
+
+      { type: 'heading', level: 3, text: "Work In Progress" },
+      { type: 'paragraph', text: "This project is currently still a work in progress. The project page will be updated as soon as there is more to show!" },
+      { type: 'heading', level: 3, text: "Damage Feedback" },
+      { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
+      {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA', // Placeholder URL
+        title: 'Player Damage Feedback',
+        description: "Visual representation of the player damage feedback.",
+      }
+    ]
+  },
   // --- Operatie Infiltratie ---
   {
     id: 'operatie-infiltratie',
@@ -71,7 +113,7 @@ export const projects: Project[] = [
     id: 'bon-appmobile',
     title: 'Bon Appmobile',
     description: "A VR cooking simulator where the objective is to bake pizzas and deliver them to houses in villages using a food truck in a large world.",
-    featuredImageUrl: '/images/placeholder-ba.jpg', // Placeholder
+    featuredImageUrl: '/projects/BonAppmobile/FeaturedImage.png', // Placeholder
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Cooking Simulator', 'School Project', 'Game Development'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.1" },
@@ -112,7 +154,7 @@ export const projects: Project[] = [
     id: 'urg',
     title: 'Untitled Rhythm Game (URG)',
     description: "Untitled Rhythm Game (URG) is a VR game where you have to hit drones to break them on the beat of the music.\nThere are multiple songs with different difficulties for you to choose from,\nso that everyone can have as much fun as they want.",
-    featuredImageUrl: '/images/placeholder-urg.jpg', // Placeholder
+    featuredImageUrl: '/projects/UntitledRhythmGame/FeaturedImage.png', // Placeholder
     tags: ['Games', 'UE Blueprints', 'Unreal Engine', 'VR', 'Rhythm Game', 'School Project'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.2" },
@@ -161,10 +203,10 @@ export const projects: Project[] = [
     id: 'backyard-td',
     title: 'BackyardTD',
     description: "BackyardTD is a 2D Tower Defense game where the goal is to attack the evil plants that are trying to attack your base. Your army consists of different animals that you can buy with your starting capital. As you kill the plants, you get more money to spend so you can buy multiple agents to get a bigger army making you undefeatable.",
-    featuredImageUrl: '/images/placeholder-bytd.jpg', // Placeholder
+    featuredImageUrl: '/projects/BackyardTD/FeaturedImage.png', // Placeholder
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Tower Defense'],
     projectInfo: [
-        { label: "Engine", value: "Unity" },
+        { label: "Engine", value: "Unity Engine" },
         { label: "Language", value: "C#" },
         { label: "Time Spent", value: "10 days" },
         { label: "Reason", value: "School Project" },
@@ -567,7 +609,7 @@ public class EnemyHealth : MonoBehaviour
     id: 'ma-jump',
     title: 'MA Jump',
     description: "MA Jump is a platforming game where you are a snowman who wants to get as high as possible. How further up you go, the harder it gets. There is a surprise once you get up to 1000 points! 😉",
-    featuredImageUrl: '/images/placeholder-majump.jpg', // Placeholder
+    featuredImageUrl: '/projects/MAJump/FeaturedImage.png', // Placeholder
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Platformer', 'Game Jam'],
     projectInfo: [
         { label: "Engine", value: "Unity 2020.3.30f1" },

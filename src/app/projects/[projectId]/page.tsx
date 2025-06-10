@@ -31,7 +31,7 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
   switch (block.type) {
     case 'heading': { // Use block scope for clarity
       // Explicitly render heading tags based on level
-      const commonClasses = "font-semibold mb-4 text-gray-200 border-b border-gray-700 pb-2";
+      const commonClasses = "font-semibold mb-4 text-[gray]-200 border-b border-gray-700 pb-2";
       switch (block.level) {
         case 1: // Use h2 styling for level 1 within content blocks
           return <h2 key={`${projectId}-block-${index}`} className={`text-3xl md:text-4xl ${commonClasses}`}>{block.text}</h2>;
@@ -133,12 +133,12 @@ export default function ProjectDetailPage({
      variants={pageVariants}
    >
      {/* Back link */}
-     <Link href="/projects" className="text-purple-400 hover:underline mb-6 inline-block">
+     <Link href="/projects" className="text-[#d97150] hover:underline mb-6 inline-block">
        &larr; Back to Projects
      </Link>
 
      {/* Project Title (Main H1) */}
-     <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-purple-300">{project.title}</h1>
+     <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-[#ff996c]">{project.title}</h1>
 
      {/* Re-added Main Project Description */}
      <p className="text-lg text-gray-300 mb-8 whitespace-pre-wrap">{project.description}</p>
@@ -147,7 +147,7 @@ export default function ProjectDetailPage({
      {project.tags && project.tags.length > 0 && (
        <div className="mb-8 flex flex-wrap gap-2">
          {project.tags.map((tag, index) => (
-           <span key={`${project.id}-tag-${index}`} className="bg-purple-600/50 text-purple-200 text-xs font-medium px-3 py-1 rounded-full">
+           <span key={`${project.id}-tag-${index}`} className="bg-[#D97150] text-white text-xs font-bold px-2 py-0.5 rounded-full">
              {tag}
            </span>
          ))}
