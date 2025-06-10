@@ -21,8 +21,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Game Developer Portfolio",
-  description: "Portfolio website for an awesome game developer",
+  title: "akari.gg | Portfolio",
+  description: "Akari's Game Development Portfolio",
 };
 
 export default function RootLayout({
