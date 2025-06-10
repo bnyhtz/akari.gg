@@ -48,7 +48,7 @@ export default function ContactPage() {
         Hit Me Up!
       </motion.h1>
       <motion.p variants={itemVariants} className="text-lg text-gray-400 text-center mb-12 max-w-2xl">
-        I'm always open to talk about new opportunities, collaborations or just to chat. Feel free to reach out!
+        I&apos;m always open to talk about new opportunities, collaborations or just to chat. Feel free to reach out!
       </motion.p>
 
       <motion.div variants={itemVariants} className="flex justify-center">

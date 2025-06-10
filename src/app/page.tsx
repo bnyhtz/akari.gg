@@ -153,7 +153,7 @@ export default function Home() {
               />
             </div>
             <p className="text-gray-300 text-lg text-center mb-6">
-              I'm currently focused on an <a href="https://IBeeXploring.com" className="text-[#D97150] hover:underline"><b>Infinite Runner</b></a> game with <a href="https://birungi.studio" className="text-[#D97150] hover:underline"><b>Birungi Studio</b></a> to create <b>Social Impact</b>. I'm using <b>C#</b> and the <b>Unity</b> Game Engine for this project.
+              I&apos;m currently focused on an <a href="https://IBeeXploring.com" className="text-[#D97150] hover:underline"><b>Infinite Runner</b></a> game with <a href="https://birungi.studio" className="text-[#D97150] hover:underline"><b>Birungi Studio</b></a> to create <b>Social Impact</b>. I&apos;m using <b>C#</b> and the <b>Unity</b> Game Engine for this project.
             </p>
 
           <motion.div variants={itemVariants} className="text-center mt-8">
