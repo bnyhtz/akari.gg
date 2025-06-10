@@ -16,10 +16,6 @@ import { Info, ListChecks } from 'lucide-react'; // Icons for the info sections
 
 
 // Next.js app directory expects params and optionally searchParams
-type ProjectDetailPageProps = {
-  params: { projectId: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
 
 // Optional: Animation variants for the detail page
 const pageVariants = {
@@ -114,7 +110,13 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
 };
 
 
-const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
+const ProjectDetailPage = ({
+  params,
+  searchParams,
+}: {
+  params: { projectId: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
   const { projectId } = params;
   const project = projects.find((p) => p.id === projectId);
 
