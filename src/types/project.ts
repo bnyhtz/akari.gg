@@ -53,6 +53,15 @@ export interface ImageGalleryBlock {
     description?: string; // Optional description for the gallery section
 }
 
+export interface ButtonBlock {
+  type: 'button';
+  text: string;
+  url?: string; // Optional: link to open when clicked
+  variant?: 'primary' | 'secondary' | 'link'; // Optional: style variant
+  icon?: string; // Optional: icon name or path
+  description?: string; // Optional: description for accessibility or tooltip
+}
+
 // --- Union Type for Content Blocks ---
 
 export type ContentBlock =
@@ -62,7 +71,8 @@ export type ContentBlock =
   | CodeSnippetBlock
   | IframeBlock
   | SpotifyTrackBlock
-  | ImageGalleryBlock; // Added ImageGalleryBlock
+  | ImageGalleryBlock
+  | ButtonBlock; // Added ButtonBlock
 
 // --- Project Metadata Types ---
 

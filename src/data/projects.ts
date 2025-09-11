@@ -174,15 +174,15 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "For every song, I had to create a MIDI file with the notes split left and right. The songs were chosen in coordination with the entire team and then shortened by me in FL Studio to fit the overall song durations. See the video on the right here what it looks like in FL & as Gameplay." },
       {
         type: 'youtube',
-        videoId: 'PLACEHOLDER_VIDEO_ID', // Placeholder Video ID
+        videoId: 'https://youtube-nocookie.com/embed/0gTujrs0ifA',
         title: "Gameplay & MIDI Preview",
-        description: "Shows MIDI editing in FL Studio and corresponding gameplay."
+        description: "Shows MIDI editing in FL Studio and corresponding gameplay. ID: Ray Volpe – Laserbeam (Blanke’s ÆON:REMIX)"
       },
       { type: 'heading', level: 3, text: "MIDI Engine" },
       { type: 'paragraph', text: "The MIDI Engine loads the song that got chosen by the player by getting all the data from said data table, loads the MIDI track, calculates the miss margin, sets the distance & time, calculates the delay and then plays the song." },
       {
         type: 'iframe',
-        url: 'PLACEHOLDER_URL_MIDI_ENGINE', // Placeholder URL
+        url: 'https://blueprintue.com/render/08l46f9x/',
         title: 'MIDI Engine Logic',
         description: "Core logic for loading and processing MIDI data.",
         isBlueprint: true
@@ -191,7 +191,7 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "Every Tick the timer goes up and then the [Validate Spawn Timer] function checks if the next drone should spawn. If the [Spawn Next Drone] boolean is true, the drone spawns left or right accordingly" },
       {
         type: 'iframe',
-        url: 'PLACEHOLDER_URL_DRONE_SPAWN', // Placeholder URL
+        url: 'https://blueprintue.com/render/6hh138zn/',
         title: 'Drone Spawning Logic',
         description: "How drones are spawned based on the MIDI timing.",
         isBlueprint: true
@@ -203,7 +203,7 @@ export const projects: Project[] = [
     id: 'backyard-td',
     title: 'BackyardTD',
     description: "BackyardTD is a 2D Tower Defense game where the goal is to attack the evil plants that are trying to attack your base. Your army consists of different animals that you can buy with your starting capital. As you kill the plants, you get more money to spend so you can buy multiple agents to get a bigger army making you undefeatable.",
-    featuredImageUrl: '/projects/BackyardTD/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/projects/BackyardTD/FeaturedImage.png',
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Tower Defense'],
     projectInfo: [
         { label: "Engine", value: "Unity Engine" },
@@ -225,7 +225,6 @@ export const projects: Project[] = [
         { type: 'paragraph', text: "Asset Credits:\nTilemap: Kittens and Elves at Work\nFrog Ninja & Pink Man: Pixel Frog\nPiranha Plants: Ansimuz" },
         { type: 'heading', level: 3, text: "Towers: Idling/Attacking" },
         { type: 'paragraph', text: "The towers will play the idle animation until enemies walk into their collider. Whenever that happens, the tower locks onto that target, plays the attack animation and starts attacking the enemy." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif1.gif', alt: 'Frog Ninja and Pink Guy Attacking' }] }, // Placeholder GIF
         { type: 'codeSnippet', language: 'csharp', title: 'TowerAttack.cs', code:
 `public class TowerAttack : MonoBehaviour
 {
@@ -273,7 +272,6 @@ export const projects: Project[] = [
         },
         { type: 'heading', level: 3, text: "Towers: Spawning + Shop + Balance" },
         { type: 'paragraph', text: "Whenever you buy a tower in the shop, it’ll follows your mouse position until you place it. Whenever you touch a border, you cannot place it and the tower will turn red. When you place the tower, the money will be deducted from your balance and it will start it’s idle animation." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif2.gif', alt: 'Tower Spawning' }] }, // Placeholder GIF
         { type: 'codeSnippet', language: 'csharp', title: 'TowerSpawn.cs', code:
 `public class TowerSpawn : MonoBehaviour
 {
@@ -349,7 +347,6 @@ export const projects: Project[] = [
         },
         { type: 'heading', level: 3, text: "Enemies: Spawning + Waves System + Damage" },
         { type: 'paragraph', text: "When you click the [Start First Wave] button, the Enemy script (which is actually the Waves System/Game Manager) randomly assigns the amount of waves and then starts the first wave. While the countdown happens for the wave to start, the NewWave() function randomly assigns the amount of enemies that will spawn with random health, speed and damage that it does to the player if you fail to kill it." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif3.gif', alt: 'Enemy Spawning' }] }, // Placeholder GIF
         { type: 'codeSnippet', language: 'csharp', title: 'Enemy.cs (Wave/Game Manager)', code:
 `using System.Collections;
 using System.Collections.Generic;
@@ -467,7 +464,6 @@ public class Enemy : MonoBehaviour // Renaming suggestion: WaveManager or GameMa
         },
         { type: 'heading', level: 3, text: "Enemies: Movement" },
         { type: 'paragraph', text: "The Enemies follow waypoints (white dots which are referenced in the EnemyMove() script) to navigate through the map. When the enemy reaches the end, the player takes damage." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-img1.png', alt: 'Enemy Waypoints' }] }, // Placeholder Image
         { type: 'codeSnippet', language: 'csharp', title: 'EnemyMove.cs', code:
 `using UnityEngine;
 
@@ -538,8 +534,7 @@ public class EnemyMove : MonoBehaviour
 }`
         },
         { type: 'heading', level: 3, text: "Enemies: Health" },
-        { type: 'paragraph', text: "Whenever the enemy gets hit by a tower, the enemy loses health. When the enemy is out of health, it dies.. that’s essentially it." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif4.gif', alt: 'Enemy Health/Waypoints' }] }, // Placeholder GIF
+        { type: 'paragraph', text: "Whenever the enemy gets hit by a tower, the enemy loses health until it runs out. When the enemy is out of health, it dies." },
         { type: 'codeSnippet', language: 'csharp', title: 'EnemyHealth.cs', code:
 `using UnityEngine;
 
@@ -625,10 +620,13 @@ public class EnemyHealth : MonoBehaviour
     ],
     contentBlocks: [
         { type: 'heading', level: 3, text: "Showreel" },
-        { type: 'paragraph', text: "Download coming soon!" }, // Could be replaced with youtube block later
-        { type: 'heading', level: 3, text: "Main Theme Song" },
-        { type: 'paragraph', text: "[Download the song here!](https://l.prodbtf.nl/jumpers)" } // Consider making this a link block type later if needed
-    ]
+        {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/1y-TXHR_S0g', // Placeholder URL
+        title: 'MA Jump: Showreel',
+        description: "Visual representation of 'MA Jump' gameplay.",
+},
+]
   },
 ];
 
