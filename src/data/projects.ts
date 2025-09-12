@@ -1,12 +1,13 @@
 import { Project } from '@/types/project'; // Import Project type
 
 export const projects: Project[] = [
-    // --- IBeeXploring ---
+    // --- I Bee Xploring ---
+    // NOTES: Add gamescom experience.
   {
     id: 'ibeexploring',
-    title: 'IBeeXploring',
+    title: 'I Bee Xploring',
     description: "An Mobile Infinite Runner game where you have to collect pollen and avoid obstacles. The game is set in a 3D world with a bee as the main character.",
-    featuredImageUrl: '/projects/IBeeXploring/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/projects/IBeeXploring/FeaturedImage.png',
     tags: ['Unity', 'C#', 'Mobile', 'Infinite Runner', 'Birungi Studio'],
     projectInfo: [
         { label: "Engine", value: "Unity Engine" },
@@ -21,15 +22,6 @@ export const projects: Project[] = [
       "Handled IOS beta testing.",
     ],
     contentBlocks: [
-    //   { type: 'heading', level: 3, text: "Gallery" },
-    //   {
-    //     type: 'imageGallery',
-    //     images: [
-    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
-    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
-    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
-    //     ]
-    //   },
 
       { type: 'heading', level: 3, text: "Work In Progress" },
       { type: 'paragraph', text: "This project is currently still a work in progress. The project page will be updated as soon as there is more to show!" },
@@ -37,10 +29,45 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
       {
         type: 'iframe',
-        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA', // Placeholder URL
+        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA',
         title: 'Player Damage Feedback',
         description: "Visual representation of the player damage feedback.",
       }
+    ]
+  },    // --- Starborn ---
+  {
+    id: 'starborn',
+    title: 'Starborn',
+    description: "A mixed reality space journey where listening to AI isn't always the answer. An Extended Reality (XR) Installation for CineKid Festival 2024 with the theme 'eigenwijs' (stubborn in Dutch), in collaboration with 'Spatial Design' students from Mediacollege Amsterdam.",
+    featuredImageUrl: '/projects/Starborn/FeaturedImage.jpeg',
+    tags: ['Unreal Engine', 'Blueprints', 'Interactive', 'XR', 'Mixed Reality', 'Virtual Production', 'Augmented Reality', 'Virtual Reality', 'Cinekid'],
+    projectInfo: [
+        { label: "Engine", value: "Unreal Engine" },
+        { label: "Language", value: "C++" },
+        { label: "Duration", value: "10 weeks (5 days/week)" },
+        { label: "Type", value: "Mixed Reality Installation/Experience" },
+        { label: "Reason", value: "Project for CineKid" }
+    ],
+    contributions: [
+      "Involved in the Game Design process",
+      "Created Minigame #1",
+      "Helped with XR Passthrough",
+      "Using your hands as 'Controllers'",
+    ],
+    contentBlocks: [
+      
+      { type: 'heading', level: 3, text: "About This Project" },
+      { type: 'paragraph', text: "After an emergency landing on an unknown planet, participants chose between finding their own way home or following the orders of the AI robot Cap-Ti. It paid off not always listening to AI! The experience featured a beautiful physical set built \ Over 1000 children experienced Starborn during its two-week run at Cinekid." },
+      
+      {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/cGDGqgsrNO4',
+        title: 'Starborn Trailer',
+        description: "The trailer made by XR Lab for Starborn.",
+      },
+        { type: 'heading', level: 3, text: "Minigame #1: Connect The Wires" },
+        { type: 'paragraph', text: "Pretend there is a Lorem Ipsum here until the actual text appears." },
+      
     ]
   },
   // --- Operatie Infiltratie ---
@@ -48,7 +75,7 @@ export const projects: Project[] = [
     id: 'operatie-infiltratie',
     title: 'Operatie Infiltratie',
     description: "An interactive virtual play where children are playfully challenged to make their voices heard through mini-games via Twitch, infiltrating places normally inaccessible to them. The story unfolds based on participants' input during a live stream.",
-    featuredImageUrl: '/projects/OperatieInfiltratie/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/projects/OperatieInfiltratie/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Virtual Production', 'Mixed Reality', 'Twitch Integration', 'Interactive', 'Live Stream', 'VPRO'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.2.1" },
@@ -78,14 +105,14 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "We have used the TwiWorks 3rd party plugin to be able to read the Twitch Chat inside of Unreal Engine and fire off events that way, so that the chat was actually interactive. Since we only had 10 weeks to do everything from start to finish, creating something from scratch would not be feasible.\n\nWhenever “the game” starts, a browser pops up, causing you to log in and those credentials are being sent thru to the project. The Twitch Chat itself gets stored into a variable for later use. (see first blueprint)\n\nEvery time a message is sent, that message will be stored into a “Twitch Message” variable, the latest message will be stored in the “Latest Message” variable and then “OnNewMessage” will run. (see second blueprint)" },
       {
         type: 'iframe',
-        url: 'https://example.com/bp1', // Placeholder URL
+        url: 'https://blueprintue.com/render/_qmf7h14/',
         title: 'Twitch Login/Credentials',
         description: "Visual representation of the Twitch login flow.",
         isBlueprint: true
       },
       {
         type: 'iframe',
-        url: 'https://example.com/bp2', // Placeholder URL
+        url: 'https://blueprintue.com/render/m4hj26e-/',
         title: 'Twitch New Message Handling',
         isBlueprint: true
       },
@@ -93,19 +120,20 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "I have imported the Graffiti Font made by Rida into the Engine and created a Material with it so we could use it to have text in different places during the experience." },
       {
         type: 'iframe',
-        url: 'https://example.com/bp3', // Placeholder URL
+        url: 'https://blueprintue.com/render/if8pns39/',
         title: 'Graffiti Font Material',
         description: "The material setup for the custom font.",
         isBlueprint: true
       },
       { type: 'heading', level: 3, text: "SFX & OST" },
       { type: 'paragraph', text: "I have sound-designed all the SFX for Minigame #1 and the OST for Minigame #2 using Fl Studio with creative input from Hendrik Walther." },
-      {
-        type: 'spotify',
-        trackId: '0H0Fir8ukF6czrVZRO1Hx8',
-        title: "OST Minigame #2",
-        description: "The original soundtrack created for the second minigame."
-      }
+      { type: 'paragraph', text: "Due to technical difficulties, the song is not live right now on DSPs. This will be resolved soon." },
+      //   {
+    //     type: 'spotify',
+    //     trackId: '0H0Fir8ukF6czrVZRO1Hx8',
+    //     title: "OST Minigame #2",
+    //     description: "The original soundtrack created for the second minigame."
+    //   }
     ]
   },
   // --- Bon Appmobile ---
@@ -113,7 +141,7 @@ export const projects: Project[] = [
     id: 'bon-appmobile',
     title: 'Bon Appmobile',
     description: "A VR cooking simulator where the objective is to bake pizzas and deliver them to houses in villages using a food truck in a large world.",
-    featuredImageUrl: '/projects/BonAppmobile/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/projects/BonAppmobile/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Cooking Simulator', 'School Project', 'Game Development'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.1" },
@@ -134,7 +162,7 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "Once the hammer touches anything with its collider, it checks if the hammer is grabbed. If the hammer is grabbed, it plays the SFX, waits a little bit and then resets the [Do Once]." },
       {
         type: 'iframe',
-        url: 'https://example.com/bp4', // Placeholder URL
+        url: 'https://blueprintue.com/render/4zzuky-j/',
         title: 'Hammer SFX Logic',
         isBlueprint: true
       },
@@ -142,7 +170,7 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "The dough checks if it’s hit by something that has the [Smash Component], it enables the [Is Hit] boolean, checks if the [Hit Index] is less/equal to the [Last Index] of the Array and if it is NOT at the [Last Index]. If it’s not at the [Last Index], it changes the Static Mesh of the dough, and waits a little bit." },
       {
         type: 'iframe',
-        url: 'https://example.com/bp5', // Placeholder URL
+        url: 'https://blueprintue.com/render/mjdbu2cg/',
         title: 'Dough Deformation Logic',
         description: "Blueprint showing how the dough mesh changes upon impact.",
         isBlueprint: true
@@ -154,7 +182,7 @@ export const projects: Project[] = [
     id: 'urg',
     title: 'Untitled Rhythm Game (URG)',
     description: "Untitled Rhythm Game (URG) is a VR game where you have to hit drones to break them on the beat of the music.\nThere are multiple songs with different difficulties for you to choose from,\nso that everyone can have as much fun as they want.",
-    featuredImageUrl: '/projects/UntitledRhythmGame/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/projects/UntitledRhythmGame/FeaturedImage.png',
     tags: ['Games', 'UE Blueprints', 'Unreal Engine', 'VR', 'Rhythm Game', 'School Project'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.2" },
@@ -599,12 +627,12 @@ public class EnemyHealth : MonoBehaviour
         }
     ]
   },
-  // --- MA Jump --- Added New Project Below
+  // --- MA Jump ---
   {
     id: 'ma-jump',
     title: 'MA Jump',
     description: "MA Jump is a platforming game where you are a snowman who wants to get as high as possible. How further up you go, the harder it gets. There is a surprise once you get up to 1000 points! 😉",
-    featuredImageUrl: '/projects/MAJump/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/projects/MAJump/FeaturedImage.png',
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Platformer', 'Game Jam'],
     projectInfo: [
         { label: "Engine", value: "Unity 2020.3.30f1" },
@@ -622,12 +650,10 @@ public class EnemyHealth : MonoBehaviour
         { type: 'heading', level: 3, text: "Showreel" },
         {
         type: 'iframe',
-        url: 'https://www.youtube-nocookie.com/embed/1y-TXHR_S0g', // Placeholder URL
+        url: 'https://www.youtube-nocookie.com/embed/1y-TXHR_S0g',
         title: 'MA Jump: Showreel',
         description: "Visual representation of 'MA Jump' gameplay.",
 },
 ]
   },
 ];
-
-// This comment is added to try and refresh the module status

@@ -54,7 +54,7 @@ export default function Home() {
 
   // --- Featured Projects Logic ---
   // Define which project IDs to feature
-  const featuredProjectIds = ['ibeexploring', 'operatie-infiltratie', 'bon-appmobile']; // Example IDs, adjust as needed
+  const featuredProjectIds = ['starborn', 'operatie-infiltratie', 'bon-appmobile']; // Example IDs, adjust as needed
 
   // Filter the main projects array
   const featuredProjectsData = projects.filter(project =>
@@ -85,11 +85,10 @@ export default function Home() {
             {/* Image Content (Moved First) */}
             <motion.div variants={itemVariants} className="flex-shrink-0 order-first"> {/* Ensure image comes first */}
                 <Image
-                    src="/images/pfp.png" // Path from public directory
+                    src="/images/bnyHead.png" // Path from public directory
                     alt="Profile Picture"
                     width={280} // Keep width/height for non-fill images
                     height={280}
-                    className="rounded-full border-4 border-[#D97150]/50 shadow-lg"
                     style={{ objectFit: 'cover' }} // Use inline style
                     priority
                 />

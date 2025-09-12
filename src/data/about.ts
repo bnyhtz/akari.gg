@@ -17,6 +17,11 @@ export const timelineData: TimelineEvent[] = [
     description: 'Working on an Mobile Infinite Runner game with the main goal being Social Impact.',
   },
   {
+    year: '2024 - Present',
+    title: 'VR Host - CineKid',
+    description: 'Assisting kids aged 4-14 years at VR/Immersive Art installations at CineKid Festival in Amsterdam.',
+  },
+  {
     year: '2021 - Present',
     title: 'Software Developer (Student) — Mediacollege Amsterdam',
     description: 'Started MBO-4 Course in Software Development, specializing in Game Development.',
