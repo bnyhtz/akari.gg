@@ -66,8 +66,14 @@ export const projects: Project[] = [
         description: "The trailer made by XR Lab for Starborn.",
       },
         { type: 'heading', level: 3, text: "Minigame #1: Connect The Wires" },
-        { type: 'paragraph', text: "Pretend there is a Lorem Ipsum here until the actual text appears." },
-      
+        { type: 'paragraph', text: "The player has to connect the right coloured wires to the correct coloured ports. (This was totally not inspired by/stolen from Among Us ;))" },
+        {
+            type: 'iframe',
+            url: 'https://blueprintue.com/render/_qmf7h14/',
+            title: 'Connect The Wires (IRL + In Game)',
+            description: "Gif showing the minigame both in real life and in game.",
+            isBlueprint: false
+        },
     ]
   },
   // --- Operatie Infiltratie ---
