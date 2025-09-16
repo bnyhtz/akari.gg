@@ -39,7 +39,7 @@ export const projects: Project[] = [
     id: 'starborn',
     title: 'Starborn',
     description: "A mixed reality space journey where listening to AI isn't always the answer. An Extended Reality (XR) Installation for CineKid Festival 2024 with the theme 'eigenwijs' (stubborn in Dutch), in collaboration with 'Spatial Design' students from Mediacollege Amsterdam.",
-    featuredImageUrl: '/projects/Starborn/FeaturedImage.jpeg',
+    featuredImageUrl: '/projects/Starborn/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'Interactive', 'XR', 'Mixed Reality', 'Virtual Production', 'Augmented Reality', 'Virtual Reality', 'Cinekid'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine" },
@@ -66,14 +66,14 @@ export const projects: Project[] = [
         description: "The trailer made by XR Lab for Starborn.",
       },
         { type: 'heading', level: 3, text: "Minigame #1: Connect The Wires" },
-        { type: 'paragraph', text: "The player has to connect the right coloured wires to the correct coloured ports. (This was totally not inspired by/stolen from Among Us ;))" },
+        { type: 'paragraph', text: "The player has to connect the right coloured wires to the correct coloured ports to be able to progress." },
         {
-            type: 'iframe',
-            url: 'https://blueprintue.com/render/_qmf7h14/',
-            title: 'Connect The Wires (IRL + In Game)',
+            type: 'image',
+            src: '/images/projects/Starborn/mg1.gif',
             description: "Gif showing the minigame both in real life and in game.",
-            isBlueprint: false
         },
+        { type: 'heading', level: 3, text: "test header" },
+        { type: 'paragraph', text: "pretend theres a lorem ipsum text here or smth, idfk kkew" },
     ]
   },
   // --- Operatie Infiltratie ---
