@@ -97,7 +97,7 @@ export default function Home() {
             {/* Text Content (Moved Second) */}
             <motion.div variants={itemVariants} className="text-center md:text-left flex-1 order-last md:order-none"> {/* Adjusted alignment and order */}
                 <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl font-bold mb-4 font-heading">
-                  Hi there, I'm Akari!
+                  Hi there, I&apos;m Akari!
                 </motion.h1>
                 <motion.p variants={itemVariants} className="text-xl md:text-2xl text-gray-400 mb-8">
                    Gamifying Social Impact, one step at a time. 
