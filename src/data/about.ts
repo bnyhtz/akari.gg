@@ -53,7 +53,7 @@ Hi, I'm Akari (they/she)! I'm a 23-year-old Game Developer and Music Artist base
 
 From a young age I loved playing games, with my first ever console being a Nintendo SNES. I’d always play Super Mario World, Yoshi’s Island or the Donkey Kong Country games. I got introduced into the world of Minecraft at the age of 7 and I loved everything about it. Throughout the years I always thought how cool it would be to be able to create my own Minecraft plugins and mods, and being able to create my own games.
 
-I started off in the develop-world with working in Scratch to create simple games (here’s one of them) and editing .yml/.json files to edit Minecraft plugins in Notepad++ before I started at Mediacollege. Once I got onto the course, I started working with HTML/CSS, Python and Javascript in VSC and then in the Unity Engine with C# and Unreal Engine with C++ and Blueprints. That was when I fell even more in love with the idea of developing my own games.
+I started off in the develop-world with working in Scratch to create simple games and editing .yml/.json files to edit Minecraft plugins in Notepad++ before I started at Mediacollege. Once I got onto the course, I started working with HTML/CSS, Python and Javascript in VSC and then in the Unity Engine with C# and Unreal Engine with C++ and Blueprints. That was when I fell even more in love with the idea of developing my own games.
 
 Currently, I'm developing an Mobile Infinite Runner game with Birungi Studio, but am also looking for a new internship to start with in September 2025.
 
