@@ -638,7 +638,7 @@ public class EnemyHealth : MonoBehaviour
     id: 'ma-jump',
     title: 'MA Jump',
     description: "MA Jump is a platforming game where you are a snowman who wants to get as high as possible. How further up you go, the harder it gets. There is a surprise once you get up to 1000 points! 😉",
-    featuredImageUrl: '/projects/MAJump/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/MAJump/FeaturedImage.png',
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Platformer', 'Game Jam'],
     projectInfo: [
         { label: "Engine", value: "Unity 2020.3.30f1" },
