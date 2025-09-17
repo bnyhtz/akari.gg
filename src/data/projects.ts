@@ -7,7 +7,7 @@ export const projects: Project[] = [
     id: 'ibeexploring',
     title: 'I Bee Xploring',
     description: "An Mobile Infinite Runner game where you have to collect pollen and avoid obstacles. The game is set in a 3D world with a bee as the main character.",
-    featuredImageUrl: '/projects/IBeeXploring/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/IBeeXploring/FeaturedImage.png',
     tags: ['Unity', 'C#', 'Mobile', 'Infinite Runner', 'Birungi Studio'],
     projectInfo: [
         { label: "Engine", value: "Unity Engine" },
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     id: 'starborn',
     title: 'Starborn',
     description: "A mixed reality space journey where listening to AI isn't always the answer. An Extended Reality (XR) Installation for CineKid Festival 2024 with the theme 'eigenwijs' (stubborn in Dutch), in collaboration with 'Spatial Design' students from Mediacollege Amsterdam.",
-    featuredImageUrl: '/projects/Starborn/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/Starborn/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'Interactive', 'XR', 'Mixed Reality', 'Virtual Production', 'Augmented Reality', 'Virtual Reality', 'Cinekid'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine" },
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     id: 'operatie-infiltratie',
     title: 'Operatie Infiltratie',
     description: "An interactive virtual play where children are playfully challenged to make their voices heard through mini-games via Twitch, infiltrating places normally inaccessible to them. The story unfolds based on participants' input during a live stream.",
-    featuredImageUrl: '/projects/OperatieInfiltratie/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/OperatieInfiltratie/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Virtual Production', 'Mixed Reality', 'Twitch Integration', 'Interactive', 'Live Stream', 'VPRO'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.2.1" },
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     id: 'bon-appmobile',
     title: 'Bon Appmobile',
     description: "A VR cooking simulator where the objective is to bake pizzas and deliver them to houses in villages using a food truck in a large world.",
-    featuredImageUrl: '/projects/BonAppmobile/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/BonAppmobile/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Cooking Simulator', 'School Project', 'Game Development'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.1" },
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     id: 'urg',
     title: 'Untitled Rhythm Game (URG)',
     description: "Untitled Rhythm Game (URG) is a VR game where you have to hit drones to break them on the beat of the music.\nThere are multiple songs with different difficulties for you to choose from,\nso that everyone can have as much fun as they want.",
-    featuredImageUrl: '/projects/UntitledRhythmGame/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/UntitledRhythmGame/FeaturedImage.png',
     tags: ['Games', 'UE Blueprints', 'Unreal Engine', 'VR', 'Rhythm Game', 'School Project'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.2" },
@@ -237,7 +237,7 @@ export const projects: Project[] = [
     id: 'backyard-td',
     title: 'BackyardTD',
     description: "BackyardTD is a 2D Tower Defense game where the goal is to attack the evil plants that are trying to attack your base. Your army consists of different animals that you can buy with your starting capital. As you kill the plants, you get more money to spend so you can buy multiple agents to get a bigger army making you undefeatable.",
-    featuredImageUrl: '/projects/BackyardTD/FeaturedImage.png',
+    featuredImageUrl: '/images/projects/BackyardTD/FeaturedImage.png',
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Tower Defense'],
     projectInfo: [
         { label: "Engine", value: "Unity Engine" },
