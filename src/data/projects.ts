@@ -25,6 +25,8 @@ export const projects: Project[] = [
 
       { type: 'heading', level: 3, text: "Work In Progress" },
       { type: 'paragraph', text: "This project is currently still a work in progress. The project page will be updated as soon as there is more to show!" },
+      { type: 'heading', level: 3, text: "Showreel" },
+      
       { type: 'heading', level: 3, text: "Damage Feedback" },
       { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
       {
@@ -32,7 +34,29 @@ export const projects: Project[] = [
         url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA',
         title: 'Player Damage Feedback',
         description: "Visual representation of the player damage feedback.",
-      }
+      },
+      { type: 'heading', level: 3, text: "Gamescom 25 - My Experience" },
+      {
+        type: 'imageGallery',
+        images: [
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_1.jpg', alt: 'Screenshot 1' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_2.jpeg', alt: 'Screenshot 2' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_3.jpeg', alt: 'Screenshot 3' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_4.jpg', alt: 'Screenshot 4' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_5.jpg', alt: 'Screenshot 5' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_6.jpeg', alt: 'Screenshot 6' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_7.jpg', alt: 'Screenshot 7' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_8.jpeg', alt: 'Screenshot 8' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_9.jpeg', alt: 'Screenshot 9' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_10.jpeg', alt: 'Screenshot 10' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_11.jpeg', alt: 'Screenshot 11' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_12.jpeg', alt: 'Screenshot 12' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_13.jpeg', alt: 'Screenshot 13' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_14.jpeg', alt: 'Screenshot 14' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_15.jpeg', alt: 'Screenshot 15' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_16.jpg', alt: 'Screenshot 16' },
+        ]
+    },
     ]
   },    // --- Starborn ---
   {
