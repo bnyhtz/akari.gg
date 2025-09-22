@@ -25,15 +25,14 @@ const CodeSnippetDisplay: React.FC<CodeSnippetDisplayProps> = ({ block }) => {
     <div className="border border-gray-700 rounded-md overflow-hidden bg-gray-800 transition-all duration-300 ease-in-out">
       {/* Header */}
       <div className="flex justify-between items-center p-2 bg-gray-700 cursor-pointer" onClick={toggleExpand}>
-        <span className="text-sm font-mono text-gray-300">
-          {/* Use title from block if available */}
+        {/* <span className="text-sm font-mono text-gray-300">
           {block.title ? `${block.title} (${block.language})` : block.language}
-        </span>
+        </span> */}
         <button
           className="text-xs text-gray-400 hover:text-white focus:outline-none"
           aria-expanded={isExpanded}
         >
-          {isExpanded ? 'Collapse [-]' : 'Expand [+]'}
+          {isExpanded ? 'Collapse Code [-]' : 'Expand Code [+]'}
         </button>
       </div>
       {/* Code Block */}

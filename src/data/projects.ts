@@ -1,12 +1,13 @@
 import { Project } from '@/types/project'; // Import Project type
 
 export const projects: Project[] = [
-    // --- IBeeXploring ---
+    // --- I Bee Xploring ---
+    // NOTES: Add gamescom experience.
   {
     id: 'ibeexploring',
-    title: 'IBeeXploring',
+    title: 'I Bee Xploring',
     description: "An Mobile Infinite Runner game where you have to collect pollen and avoid obstacles. The game is set in a 3D world with a bee as the main character.",
-    featuredImageUrl: '/projects/IBeeXploring/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/images/projects/IBeeXploring/FeaturedImage.png',
     tags: ['Unity', 'C#', 'Mobile', 'Infinite Runner', 'Birungi Studio'],
     projectInfo: [
         { label: "Engine", value: "Unity Engine" },
@@ -21,26 +22,224 @@ export const projects: Project[] = [
       "Handled IOS beta testing.",
     ],
     contentBlocks: [
-    //   { type: 'heading', level: 3, text: "Gallery" },
-    //   {
-    //     type: 'imageGallery',
-    //     images: [
-    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
-    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
-    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
-    //     ]
-    //   },
 
       { type: 'heading', level: 3, text: "Work In Progress" },
       { type: 'paragraph', text: "This project is currently still a work in progress. The project page will be updated as soon as there is more to show!" },
-      { type: 'heading', level: 3, text: "Damage Feedback" },
-      { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
+      { type: 'heading', level: 3, text: "Showreel" },
+      { type: 'paragraph', text: "This is the official trailer for 'I Bee Xploring'."},
       {
         type: 'iframe',
-        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA', // Placeholder URL
+        url: 'https://www.youtube-nocookie.com/embed/LsGeHz7Ctso',
+      },
+      { type: 'heading', level: 3, text: "Gamescom '25" },
+      { type: 'paragraph', text: "This year was my first year at Gamescom in Cologne, Germany. I did not know what to expect from the convention, or how it would be to work as a company at a convention instead of only being a guest, but it was so cool! I met so many new people, got to tell Birungi's story to hundreds of people and I've seen so many good and cool-looking cosplays. Being surrounded by a team I could call my friends is so nice, and the love of the craft all made this trip worth it. I've learned about how to properly communicate with customers, potential business partners and I got to listen to a few different game studio's stories and how they handle everything. I'd say that this trip was good for me personally, but also professionally."},
+      {
+        type: 'imageGallery',
+        images: [
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_1.jpg', alt: 'Screenshot 1' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_2.jpeg', alt: 'Screenshot 2' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_3.jpeg', alt: 'Screenshot 3' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_4.jpg', alt: 'Screenshot 4' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_5.jpg', alt: 'Screenshot 5' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_6.jpeg', alt: 'Screenshot 6' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_7.jpg', alt: 'Screenshot 7' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_8.jpeg', alt: 'Screenshot 8' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_9.jpeg', alt: 'Screenshot 9' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_10.jpeg', alt: 'Screenshot 10' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_11.jpeg', alt: 'Screenshot 11' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_12.jpeg', alt: 'Screenshot 12' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_13.jpeg', alt: 'Screenshot 13' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_14.jpeg', alt: 'Screenshot 14' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_15.jpeg', alt: 'Screenshot 15' },
+            { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_16.jpg', alt: 'Screenshot 16' },
+        ]
+    },
+      { type: 'heading', level: 3, text: "Damage Feedback (rev. 1)" },
+      { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
+      { type: 'codeSnippet', language: 'csharp', title: 'PlayerDamage.cs', code:
+        `
+public class PlayerDamage : MonoBehaviour
+{
+    [SerializeField] private float StartSpeed;
+    [SerializeField] private float Speed;
+    [SerializeField] private float negativeSpeed;
+    [SerializeField] private float Delay = 0.75f;
+    [SerializeField] private float SpeedChange = 75f;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private bool speedUp = false;
+    [SerializeField] private bool slowDown = false;
+    [SerializeField] public float _energyDrain;
+    [SerializeField] public float ogDrainValue;
+    [SerializeField] GameObject skin;
+    SphereCollider sphereCollider;
+    ChunkManager chunkManager;
+    StatsManager statsManager;
+    Player _player;
+    public UnityEvent OnHit;
+
+    void Awake()
+    {
+        _player = GameManager.Instance.GetService<Player>();
+        if (_player == null)
+        {
+            Debug.LogError("Player not found in GameManager.");
+            return;
+        }
+
+        sphereCollider = GetComponentInParent<SphereCollider>();
+        if (sphereCollider == null)
+        {
+            Debug.LogError("SphereCollider not found on parent object.");
+            return;
+        }
+
+        statsManager = GameManager.Instance.GetService<StatsManager>();
+        if (statsManager == null)
+        {
+            Debug.LogError("StatsManager not found in GameManager.");
+            return;
+        }
+        chunkManager = GameManager.Instance.GetService<ChunkManager>();
+        if (chunkManager == null)
+        {
+            Debug.LogError("ChunkManager not found in GameManager.");
+            return;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartSpeed = statsManager.GetStat("ChunkSpeed");
+        StartCoroutine(SetStartValues());
+    }
+    private IEnumerator SetStartValues()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Speed = StartSpeed;
+        negativeSpeed = -Speed;
+        currentSpeed = Speed;
+        statsManager.SubscribeToStat("EnergyDrain", (value) => _energyDrain = value);
+        ogDrainValue = statsManager.GetStat("EnergyDrain");
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer != 10 && other.gameObject.layer != 11)
+        {
+            OnHit.Invoke();
+            sphereCollider.enabled = false;
+            StartCoroutine(imumityVisibility());
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void ShotsFired()
+    {
+        currentSpeed = negativeSpeed;
+        SpeedController.Speed = currentSpeed;
+        statsManager.SetStat("ChunkSpeed", currentSpeed);
+        slowDown = true;
+        _player.Activate(false);
+    }
+    private IEnumerator DelayBeforeSpeedUp()
+    {
+        yield return new WaitForSeconds(Delay);
+    }
+    private IEnumerator imumityVisibility()
+    {
+        if (sphereCollider.enabled == true) yield break; 
+        yield return new WaitForSeconds(0.25f);
+        skin.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.25f);
+        skin.gameObject.SetActive(true);
+        StartCoroutine(imumityVisibility());
+    }
+    void Update()
+    {
+        if (slowDown == true && currentSpeed <= 0)
+        {
+            _player.Invincible(true);
+            _energyDrain = 0f;
+            statsManager.SetStat("EnergyDrain", _energyDrain);
+            currentSpeed += SpeedChange * Time.deltaTime;
+            SpeedController.Speed = currentSpeed;
+            statsManager.SetStat("ChunkSpeed", currentSpeed);
+        }
+        else if (slowDown == true && currentSpeed >= 0)
+        {
+            currentSpeed = 0;
+            SpeedController.Speed = currentSpeed;
+            slowDown = false;
+            speedUp = true;
+        }
+
+        if (speedUp == true && currentSpeed < Speed)
+        {
+            _player.Activate(true);
+            currentSpeed += SpeedChange * Time.deltaTime;
+            SpeedController.Speed = currentSpeed;
+            statsManager.SetStat("ChunkSpeed", currentSpeed);
+        }
+        else if (speedUp == true && currentSpeed >= Speed)
+        {
+            speedUp = false;
+            sphereCollider.enabled = true;
+            StartCoroutine(DelayBeforeSpeedUp());
+            _player.Invincible(false);
+            statsManager.SetStat("EnergyDrain", ogDrainValue);
+
+        }
+    }
+}`
+      },
+      {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA',
         title: 'Player Damage Feedback',
         description: "Visual representation of the player damage feedback.",
-      }
+      },
+    ]
+  },    // --- Starborn ---
+  {
+    id: 'starborn',
+    title: 'Starborn',
+    description: "A mixed reality space journey where listening to AI isn't always the answer. An Extended Reality (XR) Installation for CineKid Festival 2024 with the theme 'eigenwijs' (stubborn in Dutch), in collaboration with 'Spatial Design' students from Mediacollege Amsterdam.",
+    featuredImageUrl: '/images/projects/Starborn/FeaturedImage.png',
+    tags: ['Unreal Engine', 'Blueprints', 'Interactive', 'XR', 'Mixed Reality', 'Virtual Production', 'Augmented Reality', 'Virtual Reality', 'Cinekid'],
+    projectInfo: [
+        { label: "Engine", value: "Unreal Engine" },
+        { label: "Language", value: "C++" },
+        { label: "Duration", value: "10 weeks (5 days/week)" },
+        { label: "Type", value: "Mixed Reality Installation/Experience" },
+        { label: "Reason", value: "Project for CineKid" }
+    ],
+    contributions: [
+      "Involved in the Game Design process",
+      "Created Minigame #1",
+      "Helped with XR Passthrough",
+    ],
+    contentBlocks: [
+      
+      { type: 'heading', level: 3, text: "About This Project" },
+      { type: 'paragraph', text: "After an emergency landing on an unknown planet, participants chose between finding their own way home or following the orders of the AI robot Cap-Ti. It paid off not always listening to AI! The experience featured a beautiful physical set built \ Over 1000 children experienced Starborn during its two-week run at Cinekid." },
+      
+      {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/cGDGqgsrNO4',
+        title: 'Starborn Trailer',
+        description: "The trailer made by XR Lab for Starborn.",
+      },
+        { type: 'heading', level: 3, text: "Minigame #1: Connect The Wires" },
+        { type: 'paragraph', text: "The player has to connect the right coloured wires to the correct coloured ports to be able to progress." },
+        {
+            type: 'image',
+            src: '/images/projects/Starborn/mg1.gif',
+            description: "Gif showing the minigame both in real life and in game.",
+        },
+        { type: 'paragraph', text: "Due to this project being a collaborative project between different parties, I am unable to share the source code/methods for this project at this time." },
     ]
   },
   // --- Operatie Infiltratie ---
@@ -48,7 +247,7 @@ export const projects: Project[] = [
     id: 'operatie-infiltratie',
     title: 'Operatie Infiltratie',
     description: "An interactive virtual play where children are playfully challenged to make their voices heard through mini-games via Twitch, infiltrating places normally inaccessible to them. The story unfolds based on participants' input during a live stream.",
-    featuredImageUrl: '/projects/OperatieInfiltratie/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/images/projects/OperatieInfiltratie/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Virtual Production', 'Mixed Reality', 'Twitch Integration', 'Interactive', 'Live Stream', 'VPRO'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.2.1" },
@@ -65,27 +264,27 @@ export const projects: Project[] = [
       "Contributed ideas to the show concept."
     ],
     contentBlocks: [
-      { type: 'heading', level: 3, text: "Gallery" },
-      {
-        type: 'imageGallery',
-        images: [
-            { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
-            { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
-            { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
-        ]
-      },
+    //   { type: 'heading', level: 3, text: "Gallery" },
+    //   {
+    //     type: 'imageGallery',
+    //     images: [
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
+    //     ]
+    //   },
       { type: 'heading', level: 3, text: "Twitch Integration" },
       { type: 'paragraph', text: "We have used the TwiWorks 3rd party plugin to be able to read the Twitch Chat inside of Unreal Engine and fire off events that way, so that the chat was actually interactive. Since we only had 10 weeks to do everything from start to finish, creating something from scratch would not be feasible.\n\nWhenever “the game” starts, a browser pops up, causing you to log in and those credentials are being sent thru to the project. The Twitch Chat itself gets stored into a variable for later use. (see first blueprint)\n\nEvery time a message is sent, that message will be stored into a “Twitch Message” variable, the latest message will be stored in the “Latest Message” variable and then “OnNewMessage” will run. (see second blueprint)" },
       {
         type: 'iframe',
-        url: 'https://example.com/bp1', // Placeholder URL
+        url: 'https://blueprintue.com/render/_qmf7h14/',
         title: 'Twitch Login/Credentials',
         description: "Visual representation of the Twitch login flow.",
         isBlueprint: true
       },
       {
         type: 'iframe',
-        url: 'https://example.com/bp2', // Placeholder URL
+        url: 'https://blueprintue.com/render/m4hj26e-/',
         title: 'Twitch New Message Handling',
         isBlueprint: true
       },
@@ -93,19 +292,20 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "I have imported the Graffiti Font made by Rida into the Engine and created a Material with it so we could use it to have text in different places during the experience." },
       {
         type: 'iframe',
-        url: 'https://example.com/bp3', // Placeholder URL
+        url: 'https://blueprintue.com/render/if8pns39/',
         title: 'Graffiti Font Material',
         description: "The material setup for the custom font.",
         isBlueprint: true
       },
       { type: 'heading', level: 3, text: "SFX & OST" },
       { type: 'paragraph', text: "I have sound-designed all the SFX for Minigame #1 and the OST for Minigame #2 using Fl Studio with creative input from Hendrik Walther." },
-      {
-        type: 'spotify',
-        trackId: '0H0Fir8ukF6czrVZRO1Hx8',
-        title: "OST Minigame #2",
-        description: "The original soundtrack created for the second minigame."
-      }
+      { type: 'paragraph', text: "Due to technical difficulties, the song is not live right now on DSPs. This will be resolved soon." },
+      //   {
+    //     type: 'spotify',
+    //     trackId: '0H0Fir8ukF6czrVZRO1Hx8',
+    //     title: "OST Minigame #2",
+    //     description: "The original soundtrack created for the second minigame."
+    //   }
     ]
   },
   // --- Bon Appmobile ---
@@ -113,7 +313,7 @@ export const projects: Project[] = [
     id: 'bon-appmobile',
     title: 'Bon Appmobile',
     description: "A VR cooking simulator where the objective is to bake pizzas and deliver them to houses in villages using a food truck in a large world.",
-    featuredImageUrl: '/projects/BonAppmobile/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/images/projects/BonAppmobile/FeaturedImage.png',
     tags: ['Unreal Engine', 'Blueprints', 'VR', 'Cooking Simulator', 'School Project', 'Game Development'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.1" },
@@ -134,7 +334,7 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "Once the hammer touches anything with its collider, it checks if the hammer is grabbed. If the hammer is grabbed, it plays the SFX, waits a little bit and then resets the [Do Once]." },
       {
         type: 'iframe',
-        url: 'https://example.com/bp4', // Placeholder URL
+        url: 'https://blueprintue.com/render/4zzuky-j/',
         title: 'Hammer SFX Logic',
         isBlueprint: true
       },
@@ -142,7 +342,7 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "The dough checks if it’s hit by something that has the [Smash Component], it enables the [Is Hit] boolean, checks if the [Hit Index] is less/equal to the [Last Index] of the Array and if it is NOT at the [Last Index]. If it’s not at the [Last Index], it changes the Static Mesh of the dough, and waits a little bit." },
       {
         type: 'iframe',
-        url: 'https://example.com/bp5', // Placeholder URL
+        url: 'https://blueprintue.com/render/mjdbu2cg/',
         title: 'Dough Deformation Logic',
         description: "Blueprint showing how the dough mesh changes upon impact.",
         isBlueprint: true
@@ -154,7 +354,7 @@ export const projects: Project[] = [
     id: 'urg',
     title: 'Untitled Rhythm Game (URG)',
     description: "Untitled Rhythm Game (URG) is a VR game where you have to hit drones to break them on the beat of the music.\nThere are multiple songs with different difficulties for you to choose from,\nso that everyone can have as much fun as they want.",
-    featuredImageUrl: '/projects/UntitledRhythmGame/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/images/projects/UntitledRhythmGame/FeaturedImage.png',
     tags: ['Games', 'UE Blueprints', 'Unreal Engine', 'VR', 'Rhythm Game', 'School Project'],
     projectInfo: [
         { label: "Engine", value: "Unreal Engine 5.1.2" },
@@ -174,15 +374,15 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "For every song, I had to create a MIDI file with the notes split left and right. The songs were chosen in coordination with the entire team and then shortened by me in FL Studio to fit the overall song durations. See the video on the right here what it looks like in FL & as Gameplay." },
       {
         type: 'youtube',
-        videoId: 'PLACEHOLDER_VIDEO_ID', // Placeholder Video ID
+        videoId: 'https://youtube-nocookie.com/embed/0gTujrs0ifA',
         title: "Gameplay & MIDI Preview",
-        description: "Shows MIDI editing in FL Studio and corresponding gameplay."
+        description: "Shows MIDI editing in FL Studio and corresponding gameplay. ID: Ray Volpe – Laserbeam (Blanke’s ÆON:REMIX)"
       },
       { type: 'heading', level: 3, text: "MIDI Engine" },
       { type: 'paragraph', text: "The MIDI Engine loads the song that got chosen by the player by getting all the data from said data table, loads the MIDI track, calculates the miss margin, sets the distance & time, calculates the delay and then plays the song." },
       {
         type: 'iframe',
-        url: 'PLACEHOLDER_URL_MIDI_ENGINE', // Placeholder URL
+        url: 'https://blueprintue.com/render/08l46f9x/',
         title: 'MIDI Engine Logic',
         description: "Core logic for loading and processing MIDI data.",
         isBlueprint: true
@@ -191,7 +391,7 @@ export const projects: Project[] = [
       { type: 'paragraph', text: "Every Tick the timer goes up and then the [Validate Spawn Timer] function checks if the next drone should spawn. If the [Spawn Next Drone] boolean is true, the drone spawns left or right accordingly" },
       {
         type: 'iframe',
-        url: 'PLACEHOLDER_URL_DRONE_SPAWN', // Placeholder URL
+        url: 'https://blueprintue.com/render/6hh138zn/',
         title: 'Drone Spawning Logic',
         description: "How drones are spawned based on the MIDI timing.",
         isBlueprint: true
@@ -203,7 +403,7 @@ export const projects: Project[] = [
     id: 'backyard-td',
     title: 'BackyardTD',
     description: "BackyardTD is a 2D Tower Defense game where the goal is to attack the evil plants that are trying to attack your base. Your army consists of different animals that you can buy with your starting capital. As you kill the plants, you get more money to spend so you can buy multiple agents to get a bigger army making you undefeatable.",
-    featuredImageUrl: '/projects/BackyardTD/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/images/projects/BackyardTD/FeaturedImage.png',
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Tower Defense'],
     projectInfo: [
         { label: "Engine", value: "Unity Engine" },
@@ -225,9 +425,9 @@ export const projects: Project[] = [
         { type: 'paragraph', text: "Asset Credits:\nTilemap: Kittens and Elves at Work\nFrog Ninja & Pink Man: Pixel Frog\nPiranha Plants: Ansimuz" },
         { type: 'heading', level: 3, text: "Towers: Idling/Attacking" },
         { type: 'paragraph', text: "The towers will play the idle animation until enemies walk into their collider. Whenever that happens, the tower locks onto that target, plays the attack animation and starts attacking the enemy." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif1.gif', alt: 'Frog Ninja and Pink Guy Attacking' }] }, // Placeholder GIF
         { type: 'codeSnippet', language: 'csharp', title: 'TowerAttack.cs', code:
-`public class TowerAttack : MonoBehaviour
+`
+public class TowerAttack : MonoBehaviour
 {
     private GameObject target;
     [SerializeField] private bool canAttack = true;
@@ -273,9 +473,9 @@ export const projects: Project[] = [
         },
         { type: 'heading', level: 3, text: "Towers: Spawning + Shop + Balance" },
         { type: 'paragraph', text: "Whenever you buy a tower in the shop, it’ll follows your mouse position until you place it. Whenever you touch a border, you cannot place it and the tower will turn red. When you place the tower, the money will be deducted from your balance and it will start it’s idle animation." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif2.gif', alt: 'Tower Spawning' }] }, // Placeholder GIF
         { type: 'codeSnippet', language: 'csharp', title: 'TowerSpawn.cs', code:
-`public class TowerSpawn : MonoBehaviour
+`
+public class TowerSpawn : MonoBehaviour
 {
     // Note: Some variables like sprite, playerCurrency, mousePositionManager, red, normal, radiusRenderer, collisionCheck are assumed to be defined elsewhere or handled by Unity Inspector
     private SpriteRenderer sprite;
@@ -349,14 +549,8 @@ export const projects: Project[] = [
         },
         { type: 'heading', level: 3, text: "Enemies: Spawning + Waves System + Damage" },
         { type: 'paragraph', text: "When you click the [Start First Wave] button, the Enemy script (which is actually the Waves System/Game Manager) randomly assigns the amount of waves and then starts the first wave. While the countdown happens for the wave to start, the NewWave() function randomly assigns the amount of enemies that will spawn with random health, speed and damage that it does to the player if you fail to kill it." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif3.gif', alt: 'Enemy Spawning' }] }, // Placeholder GIF
         { type: 'codeSnippet', language: 'csharp', title: 'Enemy.cs (Wave/Game Manager)', code:
-`using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro; // Assuming TextMeshPro is used
-
+`
 public class Enemy : MonoBehaviour // Renaming suggestion: WaveManager or GameManager
 {
     public static List<GameObject> enemies; // Static list to track enemies
@@ -467,10 +661,8 @@ public class Enemy : MonoBehaviour // Renaming suggestion: WaveManager or GameMa
         },
         { type: 'heading', level: 3, text: "Enemies: Movement" },
         { type: 'paragraph', text: "The Enemies follow waypoints (white dots which are referenced in the EnemyMove() script) to navigate through the map. When the enemy reaches the end, the player takes damage." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-img1.png', alt: 'Enemy Waypoints' }] }, // Placeholder Image
         { type: 'codeSnippet', language: 'csharp', title: 'EnemyMove.cs', code:
-`using UnityEngine;
-
+`
 public class EnemyMove : MonoBehaviour
 {
     private Transform[] waypoints;
@@ -538,11 +730,9 @@ public class EnemyMove : MonoBehaviour
 }`
         },
         { type: 'heading', level: 3, text: "Enemies: Health" },
-        { type: 'paragraph', text: "Whenever the enemy gets hit by a tower, the enemy loses health. When the enemy is out of health, it dies.. that’s essentially it." },
-        { type: 'imageGallery', images: [{ url: '/images/placeholder-bytd-gif4.gif', alt: 'Enemy Health/Waypoints' }] }, // Placeholder GIF
+        { type: 'paragraph', text: "Whenever the enemy gets hit by a tower, the enemy loses health until it runs out. When the enemy is out of health, it dies." },
         { type: 'codeSnippet', language: 'csharp', title: 'EnemyHealth.cs', code:
-`using UnityEngine;
-
+`
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 10f; // Use maxHealth for clarity
@@ -604,12 +794,12 @@ public class EnemyHealth : MonoBehaviour
         }
     ]
   },
-  // --- MA Jump --- Added New Project Below
+  // --- MA Jump ---
   {
     id: 'ma-jump',
     title: 'MA Jump',
     description: "MA Jump is a platforming game where you are a snowman who wants to get as high as possible. How further up you go, the harder it gets. There is a surprise once you get up to 1000 points! 😉",
-    featuredImageUrl: '/projects/MAJump/FeaturedImage.png', // Placeholder
+    featuredImageUrl: '/images/projects/MAJump/FeaturedImage.png',
     tags: ['C#', 'Games', 'Unity', 'Windows', 'Platformer', 'Game Jam'],
     projectInfo: [
         { label: "Engine", value: "Unity 2020.3.30f1" },
@@ -625,11 +815,13 @@ public class EnemyHealth : MonoBehaviour
     ],
     contentBlocks: [
         { type: 'heading', level: 3, text: "Showreel" },
-        { type: 'paragraph', text: "Download coming soon!" }, // Could be replaced with youtube block later
-        { type: 'heading', level: 3, text: "Main Theme Song" },
-        { type: 'paragraph', text: "[Download the song here!](https://l.prodbtf.nl/jumpers)" } // Consider making this a link block type later if needed
-    ]
+        {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/1y-TXHR_S0g',
+        title: 'MA Jump: Showreel',
+        description: "Visual representation of 'MA Jump' gameplay.",
+},
+        { type: 'paragraph', text: "Due to this project being a collaborative project between different parties, I am unable to share the source code/methods for this project at this time." },
+]
   },
 ];
-
-// This comment is added to try and refresh the module status

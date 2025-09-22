@@ -4,6 +4,7 @@ export const runtime = 'edge';
 
 import { use } from "react";
 import { projects } from '@/data/projects';
+import Image from 'next/image';
 // Import the main Project type and the ContentBlock union type
 import { ContentBlock } from '@/types/project';
 import YouTubeEmbed from '@/components/projects/YouTubeEmbed';
@@ -101,6 +102,24 @@ const renderContentBlock = (block: ContentBlock, projectId: string, index: numbe
         </div>
       );
 
+    case 'image': {
+      const imgBlock = block as import('@/types/project').ImageBlock;
+      return (
+        <div key={`${projectId}-block-${index}`} className="mb-8 flex flex-col items-center">
+          {imgBlock.title && <h4 className="text-lg font-semibold mb-1 text-gray-300">{imgBlock.title}</h4>}
+          <Image
+            src={imgBlock.src}
+            alt={imgBlock.alt || imgBlock.title || 'Project image'}
+            width={800}
+            height={480}
+            className="rounded-lg shadow-lg max-w-full h-auto"
+            unoptimized
+            priority={false}
+          />
+          {imgBlock.description && <p className="text-sm text-gray-400 mt-2">{imgBlock.description}</p>}
+        </div>
+      );
+    }
     default:
       // Handle unknown block types gracefully
       if (typeof block === 'object' && block && 'type' in block) {
