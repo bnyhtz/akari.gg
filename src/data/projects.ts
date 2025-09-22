@@ -26,16 +26,13 @@ export const projects: Project[] = [
       { type: 'heading', level: 3, text: "Work In Progress" },
       { type: 'paragraph', text: "This project is currently still a work in progress. The project page will be updated as soon as there is more to show!" },
       { type: 'heading', level: 3, text: "Showreel" },
-      
-      { type: 'heading', level: 3, text: "Damage Feedback" },
-      { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
+      { type: 'paragraph', text: "This is the official trailer for 'I Bee Xploring'."},
       {
         type: 'iframe',
-        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA',
-        title: 'Player Damage Feedback',
-        description: "Visual representation of the player damage feedback.",
+        url: 'https://www.youtube-nocookie.com/embed/LsGeHz7Ctso',
       },
-      { type: 'heading', level: 3, text: "Gamescom 25 - My Experience" },
+      { type: 'heading', level: 3, text: "Gamescom '25" },
+      { type: 'paragraph', text: "This year was my first year at Gamescom in Cologne, Germany. I did not know what to expect from the convention, or how it would be to work as a company at a convention instead of only being a guest, but it was so cool! I met so many new people, got to tell Birungi's story to hundreds of people and I've seen so many good and cool-looking cosplays. Being surrounded by a team I could call my friends is so nice, and the love of the craft all made this trip worth it. I've learned about how to properly communicate with customers, potential business partners and I got to listen to a few different game studio's stories and how they handle everything. I'd say that this trip was good for me personally, but also professionally."},
       {
         type: 'imageGallery',
         images: [
@@ -57,6 +54,153 @@ export const projects: Project[] = [
             { url: '/images/projects/IBeeXploring/gamescom25/bnyGamescom25_16.jpg', alt: 'Screenshot 16' },
         ]
     },
+      { type: 'heading', level: 3, text: "Damage Feedback (rev. 1)" },
+      { type: 'paragraph', text: "When the player takes damage, a visual feedback is shown on the screen to indicate the hit. The player gets bounced back, takes damage, stops moving for a brief moment and then recovers." },
+      { type: 'codeSnippet', language: 'csharp', title: 'PlayerDamage.cs', code:
+        `
+public class PlayerDamage : MonoBehaviour
+{
+    [SerializeField] private float StartSpeed;
+    [SerializeField] private float Speed;
+    [SerializeField] private float negativeSpeed;
+    [SerializeField] private float Delay = 0.75f;
+    [SerializeField] private float SpeedChange = 75f;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private bool speedUp = false;
+    [SerializeField] private bool slowDown = false;
+    [SerializeField] public float _energyDrain;
+    [SerializeField] public float ogDrainValue;
+    [SerializeField] GameObject skin;
+    SphereCollider sphereCollider;
+    ChunkManager chunkManager;
+    StatsManager statsManager;
+    Player _player;
+    public UnityEvent OnHit;
+
+    void Awake()
+    {
+        _player = GameManager.Instance.GetService<Player>();
+        if (_player == null)
+        {
+            Debug.LogError("Player not found in GameManager.");
+            return;
+        }
+
+        sphereCollider = GetComponentInParent<SphereCollider>();
+        if (sphereCollider == null)
+        {
+            Debug.LogError("SphereCollider not found on parent object.");
+            return;
+        }
+
+        statsManager = GameManager.Instance.GetService<StatsManager>();
+        if (statsManager == null)
+        {
+            Debug.LogError("StatsManager not found in GameManager.");
+            return;
+        }
+        chunkManager = GameManager.Instance.GetService<ChunkManager>();
+        if (chunkManager == null)
+        {
+            Debug.LogError("ChunkManager not found in GameManager.");
+            return;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartSpeed = statsManager.GetStat("ChunkSpeed");
+        StartCoroutine(SetStartValues());
+    }
+    private IEnumerator SetStartValues()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Speed = StartSpeed;
+        negativeSpeed = -Speed;
+        currentSpeed = Speed;
+        statsManager.SubscribeToStat("EnergyDrain", (value) => _energyDrain = value);
+        ogDrainValue = statsManager.GetStat("EnergyDrain");
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer != 10 && other.gameObject.layer != 11)
+        {
+            OnHit.Invoke();
+            sphereCollider.enabled = false;
+            StartCoroutine(imumityVisibility());
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void ShotsFired()
+    {
+        currentSpeed = negativeSpeed;
+        SpeedController.Speed = currentSpeed;
+        statsManager.SetStat("ChunkSpeed", currentSpeed);
+        slowDown = true;
+        _player.Activate(false);
+    }
+    private IEnumerator DelayBeforeSpeedUp()
+    {
+        yield return new WaitForSeconds(Delay);
+    }
+    private IEnumerator imumityVisibility()
+    {
+        if (sphereCollider.enabled == true) yield break; 
+        yield return new WaitForSeconds(0.25f);
+        skin.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.25f);
+        skin.gameObject.SetActive(true);
+        StartCoroutine(imumityVisibility());
+    }
+    void Update()
+    {
+        if (slowDown == true && currentSpeed <= 0)
+        {
+            _player.Invincible(true);
+            _energyDrain = 0f;
+            statsManager.SetStat("EnergyDrain", _energyDrain);
+            currentSpeed += SpeedChange * Time.deltaTime;
+            SpeedController.Speed = currentSpeed;
+            statsManager.SetStat("ChunkSpeed", currentSpeed);
+        }
+        else if (slowDown == true && currentSpeed >= 0)
+        {
+            currentSpeed = 0;
+            SpeedController.Speed = currentSpeed;
+            slowDown = false;
+            speedUp = true;
+        }
+
+        if (speedUp == true && currentSpeed < Speed)
+        {
+            _player.Activate(true);
+            currentSpeed += SpeedChange * Time.deltaTime;
+            SpeedController.Speed = currentSpeed;
+            statsManager.SetStat("ChunkSpeed", currentSpeed);
+        }
+        else if (speedUp == true && currentSpeed >= Speed)
+        {
+            speedUp = false;
+            sphereCollider.enabled = true;
+            StartCoroutine(DelayBeforeSpeedUp());
+            _player.Invincible(false);
+            statsManager.SetStat("EnergyDrain", ogDrainValue);
+
+        }
+    }
+}`
+      },
+      {
+        type: 'iframe',
+        url: 'https://www.youtube-nocookie.com/embed/8bECTOfU5KA',
+        title: 'Player Damage Feedback',
+        description: "Visual representation of the player damage feedback.",
+      },
     ]
   },    // --- Starborn ---
   {
@@ -76,7 +220,6 @@ export const projects: Project[] = [
       "Involved in the Game Design process",
       "Created Minigame #1",
       "Helped with XR Passthrough",
-      "Using your hands as 'Controllers'",
     ],
     contentBlocks: [
       
@@ -95,9 +238,7 @@ export const projects: Project[] = [
             type: 'image',
             src: '/images/projects/Starborn/mg1.gif',
             description: "Gif showing the minigame both in real life and in game.",
-        },
-        { type: 'heading', level: 3, text: "test header" },
-        { type: 'paragraph', text: "pretend theres a lorem ipsum text here or smth, idfk kkew" },
+        }
     ]
   },
   // --- Operatie Infiltratie ---
@@ -284,7 +425,8 @@ export const projects: Project[] = [
         { type: 'heading', level: 3, text: "Towers: Idling/Attacking" },
         { type: 'paragraph', text: "The towers will play the idle animation until enemies walk into their collider. Whenever that happens, the tower locks onto that target, plays the attack animation and starts attacking the enemy." },
         { type: 'codeSnippet', language: 'csharp', title: 'TowerAttack.cs', code:
-`public class TowerAttack : MonoBehaviour
+`
+public class TowerAttack : MonoBehaviour
 {
     private GameObject target;
     [SerializeField] private bool canAttack = true;
@@ -331,7 +473,8 @@ export const projects: Project[] = [
         { type: 'heading', level: 3, text: "Towers: Spawning + Shop + Balance" },
         { type: 'paragraph', text: "Whenever you buy a tower in the shop, it’ll follows your mouse position until you place it. Whenever you touch a border, you cannot place it and the tower will turn red. When you place the tower, the money will be deducted from your balance and it will start it’s idle animation." },
         { type: 'codeSnippet', language: 'csharp', title: 'TowerSpawn.cs', code:
-`public class TowerSpawn : MonoBehaviour
+`
+public class TowerSpawn : MonoBehaviour
 {
     // Note: Some variables like sprite, playerCurrency, mousePositionManager, red, normal, radiusRenderer, collisionCheck are assumed to be defined elsewhere or handled by Unity Inspector
     private SpriteRenderer sprite;
@@ -406,12 +549,7 @@ export const projects: Project[] = [
         { type: 'heading', level: 3, text: "Enemies: Spawning + Waves System + Damage" },
         { type: 'paragraph', text: "When you click the [Start First Wave] button, the Enemy script (which is actually the Waves System/Game Manager) randomly assigns the amount of waves and then starts the first wave. While the countdown happens for the wave to start, the NewWave() function randomly assigns the amount of enemies that will spawn with random health, speed and damage that it does to the player if you fail to kill it." },
         { type: 'codeSnippet', language: 'csharp', title: 'Enemy.cs (Wave/Game Manager)', code:
-`using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro; // Assuming TextMeshPro is used
-
+`
 public class Enemy : MonoBehaviour // Renaming suggestion: WaveManager or GameManager
 {
     public static List<GameObject> enemies; // Static list to track enemies
@@ -523,8 +661,7 @@ public class Enemy : MonoBehaviour // Renaming suggestion: WaveManager or GameMa
         { type: 'heading', level: 3, text: "Enemies: Movement" },
         { type: 'paragraph', text: "The Enemies follow waypoints (white dots which are referenced in the EnemyMove() script) to navigate through the map. When the enemy reaches the end, the player takes damage." },
         { type: 'codeSnippet', language: 'csharp', title: 'EnemyMove.cs', code:
-`using UnityEngine;
-
+`
 public class EnemyMove : MonoBehaviour
 {
     private Transform[] waypoints;
@@ -594,8 +731,7 @@ public class EnemyMove : MonoBehaviour
         { type: 'heading', level: 3, text: "Enemies: Health" },
         { type: 'paragraph', text: "Whenever the enemy gets hit by a tower, the enemy loses health until it runs out. When the enemy is out of health, it dies." },
         { type: 'codeSnippet', language: 'csharp', title: 'EnemyHealth.cs', code:
-`using UnityEngine;
-
+`
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 10f; // Use maxHealth for clarity
