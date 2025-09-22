@@ -55,7 +55,7 @@ From a young age I loved playing games, with my first ever console being a Ninte
 
 I started off in the develop-world with working in Scratch to create simple games and editing .yml/.json files to edit Minecraft plugins in Notepad++ before I started at Mediacollege. Once I got onto the course, I started working with HTML/CSS, Python and Javascript in VSC and then in the Unity Engine with C# and Unreal Engine with C++ and Blueprints. That was when I fell even more in love with the idea of developing my own games.
 
-Currently, I'm developing an Mobile Infinite Runner game with Birungi Studio, but am also looking for a new internship to start with in September 2025.
+Currently, I'm developing an Mobile Infinite Runner game with Birungi Studio, but I am always curious & excited to create new things.
 
 If you’re interested in more about me, or to work together with me, feel free to contact me!
 `;
