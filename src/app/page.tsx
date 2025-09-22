@@ -54,7 +54,7 @@ export default function Home() {
 
   // --- Featured Projects Logic ---
   // Define which project IDs to feature
-  const featuredProjectIds = ['ibeexploring', 'operatie-infiltratie', 'bon-appmobile']; // Example IDs, adjust as needed
+  const featuredProjectIds = ['starborn', 'operatie-infiltratie', 'bon-appmobile']; // Example IDs, adjust as needed
 
   // Filter the main projects array
   const featuredProjectsData = projects.filter(project =>
@@ -85,11 +85,10 @@ export default function Home() {
             {/* Image Content (Moved First) */}
             <motion.div variants={itemVariants} className="flex-shrink-0 order-first"> {/* Ensure image comes first */}
                 <Image
-                    src="/images/pfp.png" // Path from public directory
+                    src="/images/bnyHead.png" // Path from public directory
                     alt="Profile Picture"
                     width={280} // Keep width/height for non-fill images
                     height={280}
-                    className="rounded-full border-4 border-[#D97150]/50 shadow-lg"
                     style={{ objectFit: 'cover' }} // Use inline style
                     priority
                 />
@@ -101,7 +100,7 @@ export default function Home() {
                   Hi there, I&apos;m Akari!
                 </motion.h1>
                 <motion.p variants={itemVariants} className="text-xl md:text-2xl text-gray-400 mb-8">
-                  Creating digital experiences packed with fun, creativity, and interactivity.
+                   Gamifying Social Impact, one step at a time. 
                 </motion.p>
                 <motion.div variants={itemVariants}>
                   <Link href="/projects" passHref legacyBehavior>
@@ -136,7 +135,7 @@ export default function Home() {
             What I&apos;m Currently Working On
           </motion.h2>
           <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl text-gray-300 text-center font-bold">
-            IBeeXploring
+            I Bee Xploring
           </motion.h2>
           <motion.p variants={itemVariants} className="text-gray-300 text-lg text-center mb-3">
             a Birungi Studio project

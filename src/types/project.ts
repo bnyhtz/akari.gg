@@ -53,6 +53,13 @@ export interface ImageGalleryBlock {
     description?: string; // Optional description for the gallery section
 }
 
+export interface ImageBlock {
+  type: 'image';
+  src: string;
+  alt?: string;
+  title?: string;
+  description?: string;
+}
 // --- Union Type for Content Blocks ---
 
 export type ContentBlock =
@@ -62,8 +69,9 @@ export type ContentBlock =
   | CodeSnippetBlock
   | IframeBlock
   | SpotifyTrackBlock
-  | ImageGalleryBlock; // Added ImageGalleryBlock
-
+  | ImageGalleryBlock
+  | ImageBlock;
+  
 // --- Project Metadata Types ---
 
 export interface ProjectInfoItem {

@@ -4,9 +4,9 @@ import { Linkedin, Github, Music } from 'lucide-react'; // Import icons
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const linkedInUrl = "#"; // Placeholder URL
-  const githubUrl = "#"; // Placeholder URL
-  const musicUrl = "https://link.akari.gg/music"; // Placeholder URL for music profile
+  const linkedInUrl = "https://linkedin.com/in/bnyhtz";
+  const githubUrl = "https://github.com/bnyhtz";
+  const musicUrl = "https://link.akari.gg/music";
 
   return (
     <footer className="bg-gray-900 border-t border-gray-700/50 mt-auto py-8 px-4"> {/* mt-auto pushes footer down */}
