@@ -238,7 +238,8 @@ public class PlayerDamage : MonoBehaviour
             type: 'image',
             src: '/images/projects/Starborn/mg1.gif',
             description: "Gif showing the minigame both in real life and in game.",
-        }
+        },
+        { type: 'paragraph', text: "Due to this project being a collaborative project between different parties, I am unable to share the source code/methods for this project at this time." },
     ]
   },
   // --- Operatie Infiltratie ---
@@ -263,15 +264,15 @@ public class PlayerDamage : MonoBehaviour
       "Contributed ideas to the show concept."
     ],
     contentBlocks: [
-      { type: 'heading', level: 3, text: "Gallery" },
-      {
-        type: 'imageGallery',
-        images: [
-            { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
-            { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
-            { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
-        ]
-      },
+    //   { type: 'heading', level: 3, text: "Gallery" },
+    //   {
+    //     type: 'imageGallery',
+    //     images: [
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 1' },
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 2' },
+    //         { url: '/projects/OperatieInfiltratie/FeaturedImage.png', alt: 'Screenshot 3' },
+    //     ]
+    //   },
       { type: 'heading', level: 3, text: "Twitch Integration" },
       { type: 'paragraph', text: "We have used the TwiWorks 3rd party plugin to be able to read the Twitch Chat inside of Unreal Engine and fire off events that way, so that the chat was actually interactive. Since we only had 10 weeks to do everything from start to finish, creating something from scratch would not be feasible.\n\nWhenever “the game” starts, a browser pops up, causing you to log in and those credentials are being sent thru to the project. The Twitch Chat itself gets stored into a variable for later use. (see first blueprint)\n\nEvery time a message is sent, that message will be stored into a “Twitch Message” variable, the latest message will be stored in the “Latest Message” variable and then “OnNewMessage” will run. (see second blueprint)" },
       {
@@ -820,6 +821,7 @@ public class EnemyHealth : MonoBehaviour
         title: 'MA Jump: Showreel',
         description: "Visual representation of 'MA Jump' gameplay.",
 },
+        { type: 'paragraph', text: "Due to this project being a collaborative project between different parties, I am unable to share the source code/methods for this project at this time." },
 ]
   },
 ];

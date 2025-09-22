@@ -135,7 +135,7 @@ export default function Home() {
             What I&apos;m Currently Working On
           </motion.h2>
           <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl text-gray-300 text-center font-bold">
-            IBeeXploring
+            I Bee Xploring
           </motion.h2>
           <motion.p variants={itemVariants} className="text-gray-300 text-lg text-center mb-3">
             a Birungi Studio project
